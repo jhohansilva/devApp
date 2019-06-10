@@ -1,0 +1,65 @@
+<!-- <template id="login.html"> -->
+<ons-page>
+    <main>
+        <header>
+            <div id="logo">
+                <!-- <img src="http://titansoluciones.com/img/7dd7f9bfbb6f8f1992deaed1dadebaf9_76x79.png" /> -->
+            </div>
+        </header>
+        <div class="content">
+            <div class="form">
+                <div class="title">Inicio de sesión</div>
+                <ons-input autocomplete="off" autocorrect="off" autocapitalize="off" id="username" type="text"
+                    modifier="underbar" placeholder="Correo electrónico" float></ons-input>
+                <ons-input autocomplete="off" autocorrect="off" autocapitalize="off" id="pass" type="password"
+                    modifier="underbar" placeholder="Contraseña" float></ons-input>
+                <ons-icon class="togglePass" icon="ion-eye-disabled" size="27px"></ons-icon>
+                <ons-list-item style="padding: 0;">
+                    <div class="center labelSwitch">
+                        Recordar cuenta
+                    </div>
+                    <div class="left">
+                        <ons-switch></ons-switch>
+                    </div>
+                </ons-list-item>
+                <ons-button id="enviar" modifier="large">Ingresar</ons-button>
+                <div class="recoverPass"><a href="#">Recuperar contraseña</a></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        ons.getScriptPage().onInit = function () {
+            $("#enviar").click(login);
+            $('.togglePass').click(function () {
+                if ($(this).attr('icon') == 'ion-eye-disabled') {
+                    $(this)
+                        .attr('icon', 'ion-eye')
+                        .attr('style', 'color:#012362;font-size:25px;');
+                    $('#pass').attr('type', 'text');
+                } else {
+                    $(this)
+                        .attr('icon', 'ion-eye-disabled')
+                        .attr('style', 'font-size:25px;');
+                    $('#pass').attr('type', 'password');
+                }
+            });
+        };
+
+        function login(e) {
+            var username = $('#username').val();
+            var pass = $('#pass').val();
+
+            if (username.length < 1) sendToast('Ingresa un correo electrónico');
+            else if (pass.length < 1) sendToast('Ingresa una contraseña'); 
+            else {
+                localStorage.sesion = '123456';
+                location.reload();
+            }
+        }
+
+        function sendToast(msg) {
+            ons.notification.toast(msg, { timeout: 1000, animation: 'ascend' })
+        }
+    </script>
+</ons-page>
+<!-- </template> -->

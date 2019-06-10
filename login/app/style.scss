@@ -1,0 +1,166 @@
+@font-face {
+  font-family: NunitoSans-regular;
+  src: url(../../css/nunitoSans/NunitoSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: NunitoSans-SemiBold;
+  src: url(../../css/nunitoSans/NunitoSans-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: NunitoSans-Bold;
+  src: url(../../css/nunitoSans/NunitoSans-Bold.ttf) format("truetype");
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: initial;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  background: #f9f9f9;
+  font-family: NunitoSans-regular;
+  color: #333;
+}
+
+header {
+  width: 100%;
+  height: 40%;
+  background: #012362;
+  background-image: url(https://www.marthadebayle.com/wp-content/uploads/2017/09/edificio-850x585.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(6, 40, 105, 0.6196078431372549);
+  }
+
+  #logo {
+    text-align: center;
+    // margin-bottom: 100px;
+  }
+}
+
+.content {
+  width: 100%;
+  height: calc(60% + 20px);
+  margin: 0 auto;
+  z-index: 99999;
+  position: relative;
+
+  .form {
+    background: #fff;
+    width: 75%;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: -40px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+
+    .title {
+      font-size: 24px;
+      font-family: NunitoSans-SemiBold;
+      margin-bottom: 25px;
+    }
+  }
+
+  ons-button,
+  ons-input input,
+  .text-input__label {
+    font-family: NunitoSans-regular;
+  }
+
+  ons-input {
+    width: 100%;
+    border-radius: 2px;
+
+    &#username {
+      margin-bottom: 30px;
+    }
+
+    &#pass {
+      // margin-bottom: 5px;
+    }
+
+    input {
+      padding: 15px 10px !important;
+      height: auto !important;
+      color: #222 !important;
+      font-size: 16px;
+      font-family: NunitoSans-SemiBold;
+    }
+
+    input#username {
+      text-transform: lowercase;
+    }
+
+    .text-input__label {
+      left: 10px;
+      top: 14px;
+      color: #bdbdbd;
+      font-size: 16px;
+      font-family: NunitoSans-regular;
+    }
+
+    .text-input--material__label--active {
+      -webkit-transform: translate(0, -30px) scale(0.75);
+      transform: translate(0, -22px) scale(0.75);
+      left: 0px;
+      color: #4b6d9a;
+    }
+
+    .text-input--material:focus {
+      background-image: linear-gradient(to left, #012362, #2f59a9),
+        linear-gradient(to top, transparent 1px, #afafaf 1px);
+    }
+  }
+
+  .recoverPass {
+    text-align: right;
+    padding-top: 10px;
+    a {
+      color: #012362;
+      font-family: NunitoSans-SemiBold;
+    }
+  }
+
+  .labelSwitch,
+  .recoverPass {
+    font-size: 14px;
+    font-family: NunitoSans-regular;
+    color: #666;
+  }
+
+  .togglePass {
+    z-index: 99;
+    float: right;
+    margin-top: -34px;
+    margin-right: 10px;
+    position: relative;
+    color: #666;
+  }
+
+  ons-button {
+    padding: 25px 0px !important;
+    height: auto !important;
+    min-height: auto !important;
+    line-height: 0 !important;
+    background: linear-gradient(to left, #012362, #2f59a9);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-family: NunitoSans-SemiBold;
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,3 @@
+pasarArchivosApp.bat
+exclusion.txt
+login\app\
