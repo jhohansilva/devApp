@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 
 $return = [
-    "cod" => "99",
+    "cod" => "00",
     "sesion" => $_POST['sesion']
 ];
 
