@@ -1,0 +1,22 @@
+<!-- <template id="main.html"> -->
+    <ons-page id="main">
+        <ons-splitter id="appSplitter">
+            <ons-splitter-side id="sidemenu" page="paginas/components/side-menu.html" swipeable side="left" collapse="" width="260px">
+            </ons-splitter-side>
+            <ons-splitter-content page="paginas/components/tabbar.html"></ons-splitter-content>
+        </ons-splitter>
+        <script>
+            ons.ready(function () {
+                console.log('Iniciado')
+                ons.setDefaultDeviceBackButtonListener(function (event) {
+                    ons.notification.confirm('Do you want to close the app?') // Ask for confirmation
+                        .then(function (index) {
+                            if (index === 1) { // OK button
+                                navigator.app.exitApp(); // Close the app
+                            }
+                        });
+                });
+            });
+        </script>
+    </ons-page>
+<!-- </template> -->

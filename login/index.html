@@ -20,7 +20,7 @@
                 validarSesion()
                 && localStorage.sesion != 'false'
                 && localStorage.sesion.trim().length > 0
-            ) document.querySelector('#myNavigator').pushPage('main.html');
+            ) document.querySelector('#myNavigator').pushPage('../main.html');
             else document.querySelector('#myNavigator').pushPage('login.html');
         })
 
@@ -51,29 +51,6 @@
 
     <ons-navigator swipeable swipe-target-width="80px" id="myNavigator"></ons-navigator>
 
-    <template id="main.html">
-        <ons-page id="main">
-            <ons-splitter id="appSplitter">
-                <ons-splitter-side id="sidemenu" page="sidemenu.html" swipeable side="left" collapse="" width="260px">
-                </ons-splitter-side>
-                <ons-splitter-content page="tabbar.html"></ons-splitter-content>
-            </ons-splitter>
-            <script>
-                ons.ready(function () {
-                    console.log('Iniciado')
-                    ons.setDefaultDeviceBackButtonListener(function (event) {
-                        ons.notification.confirm('Do you want to close the app?') // Ask for confirmation
-                            .then(function (index) {
-                                if (index === 1) { // OK button
-                                    navigator.app.exitApp(); // Close the app
-                                }
-                            });
-                    });
-                });
-            </script>
-        </ons-page>
-    </template>
-
     <template id="tabbar.html">
         <ons-page id="tabbar-page">
             <ons-toolbar>
@@ -100,92 +77,6 @@
         </ons-page>
     </template>
 
-
-    <template id="sidemenu.html">
-        <ons-page id="side-nav">
-            <div class="profile-pic">
-                <!-- <img src="http://www.elmatecreativos.com/wp-content/uploads/2014/06/logo_kommuna-662x332.jpg"> -->
-            </div>
-
-            <ons-list-title style="margin-top: 10px">Navegación</ons-list-title>
-            <ons-list>
-                <ons-list-item class="itm-list" tappable>Principal</ons-list-item>
-                <ons-list-item class="itm-list" tappable>Pagar facturas</ons-list-item>
-                <ons-list-item class="itm-list" tappable>Clasificados</ons-list-item>
-                <ons-list-item class="itm-list" expandable>
-                    Procesos
-                    <ons-list class="expandable-content">
-                        <ons-list-item>Cartera</ons-list-item>
-                        <ons-list-item tappable onclick="fn.pushPage({'id': 'noticia1.html', 'title': 'Noticia 1'})">
-                            Facturación</ons-list-item>
-                        <ons-list-item tappable>Pagos</ons-list-item>
-                        <ons-list-item tappable>Publicaciones</ons-list-item>
-                    </ons-list>
-                </ons-list-item>
-                <ons-list-item class="itm-list" tappable>P.Q.R.</ons-list-item>
-                <ons-list-item class="itm-list" expandable>
-                    Usuario
-                    <ons-list class="expandable-content">
-                        <ons-list-item tappable>información</ons-list-item>
-                        <ons-list-item tappable>Salir</ons-list-item>
-                    </ons-list>
-                </ons-list-item>
-            </ons-list>
-
-            <script>
-                ons.getScriptPage().onInit = function () {
-                    // Set ons-splitter-side animation
-                    this.parentElement.setAttribute('animation', ons.platform.isAndroid() ? 'overlay' : 'reveal');
-                };
-            </script>
-
-            <!-- <style>
-                .profile-pic {
-                    /* width: 200px; */
-                    background-color: #fff;
-                    /* margin: 20px auto 10px; */
-                    /* border: 1px solid #999; */
-                    /* border-radius: 4px; */
-                }
-
-                .profile-pic>img {
-                    display: block;
-                    max-width: 100%;
-                }
-
-                ons-list-item {
-                    color: #444;
-                }
-
-                #side-nav>.page__background,
-                .list--material {
-                    background: #1a2732 !important;
-                }
-
-                ons-list-title {
-                    color: #FFF !important;
-                    font-size: 10px !important;
-                    font-weight: 400 !important;
-                }
-
-                .list-item__top>div,
-                .list-item__center {
-                    color: #FFF;
-                }
-
-                .itm-list {
-                    padding: 5px 0 5px 16px;
-                    border: none !important;
-                    background: transparent !important;
-                }
-
-                .list-item__center,
-                .list-item--material__center {
-                    background: transparent !important;
-                }
-            </style> -->
-        </ons-page>
-    </template>
 
     <template id="home.html">
         <ons-page>

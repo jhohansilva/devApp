@@ -1,0 +1,70 @@
+<!-- <template id="sidemenu.html"> -->
+<ons-page id="side-nav">
+    <div class="header-nav">
+        <ons-list>
+            <ons-list-item>
+                <div class="left">
+                    <img class="list-item__thumbnail" src="https://placekitten.com/g/40/40">
+                </div>
+                <div class="center">
+                    <span class="list-item__title">Jhohan Silva</span>
+                    <span class="list-item__subtitle">jhohanf.silva@gmail.com</span>
+                </div>
+            </ons-list-item>
+        </ons-list>
+    </div>
+    <ons-list >
+        <ons-list-item onclick="document.getElementById('appTabbar').setActiveTab(0);" modifier="longdivider" class="itm-list" tappable>
+            <div class="left">
+                <ons-icon icon="fa-home" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center">
+                Principal
+            </div>
+        </ons-list-item>
+        <!-- <ons-list-title>Procesos</ons-list-title> -->
+        <ons-list-item modifier="longdivider" class="itm-list" expandable>
+            <div class="left">
+                <ons-icon icon="fa-folder" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center">
+                Reportes
+            </div>
+            <ons-list  class="expandable-content">
+                <ons-list-item>Cartera</ons-list-item>
+                <ons-list-item tappable onclick="fn.pushPage({'id': 'noticia1.html', 'title': 'Noticia 1'})">
+                    Facturación</ons-list-item>
+                <ons-list-item tappable>Pagos</ons-list-item>
+                <ons-list-item tappable>Publicaciones</ons-list-item>
+            </ons-list>
+        </ons-list-item>
+        <ons-list-item modifier="longdivider" class="itm-list" tappable>
+            <div class="left">
+                <ons-icon icon="fa-envelope-open" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center">
+                Contacto
+            </div>
+        </ons-list-item>
+        <ons-list-item modifier="longdivider" class="itm-list" expandable>
+            <div class="left">
+                <ons-icon icon="fa-address-card" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center">
+                Usuario
+            </div>
+            <ons-list class="expandable-content">
+                <ons-list-item tappable>información</ons-list-item>
+                <ons-list-item tappable>Salir</ons-list-item>
+            </ons-list>
+        </ons-list-item>
+    </ons-list>
+
+    <script>
+        ons.getScriptPage().onInit = function () {
+            // Set ons-splitter-side animation
+            this.parentElement.setAttribute('animation', ons.platform.isAndroid() ? 'overlay' : 'reveal');
+        };
+    </script>
+</ons-page>
+<!-- </template> -->
