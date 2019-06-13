@@ -13,8 +13,9 @@
             </ons-list-item>
         </ons-list>
     </div>
-    <ons-list >
-        <ons-list-item onclick="document.getElementById('appTabbar').setActiveTab(0);" modifier="longdivider" class="itm-list" tappable>
+    <ons-list>
+        <ons-list-item onclick="document.getElementById('appTabbar').setActiveTab(0);" modifier="nodivider"
+            class="itm-list" tappable>
             <div class="left">
                 <ons-icon icon="fa-home" class="list-item__icon"></ons-icon>
             </div>
@@ -23,14 +24,14 @@
             </div>
         </ons-list-item>
         <!-- <ons-list-title>Procesos</ons-list-title> -->
-        <ons-list-item modifier="longdivider" class="itm-list" expandable>
+        <ons-list-item modifier="nodivider" class="itm-list" expandable>
             <div class="left">
                 <ons-icon icon="fa-folder" class="list-item__icon"></ons-icon>
             </div>
             <div class="center">
                 Reportes
             </div>
-            <ons-list  class="expandable-content">
+            <ons-list class="expandable-content">
                 <ons-list-item>Cartera</ons-list-item>
                 <ons-list-item tappable onclick="fn.pushPage({'id': 'noticia1.html', 'title': 'Noticia 1'})">
                     Facturación</ons-list-item>
@@ -38,25 +39,25 @@
                 <ons-list-item tappable>Publicaciones</ons-list-item>
             </ons-list>
         </ons-list-item>
-        <ons-list-item modifier="longdivider" class="itm-list" tappable>
-            <div class="left">
-                <ons-icon icon="fa-envelope-open" class="list-item__icon"></ons-icon>
-            </div>
-            <div class="center">
-                Contacto
-            </div>
-        </ons-list-item>
         <ons-list-item modifier="longdivider" class="itm-list" expandable>
             <div class="left">
                 <ons-icon icon="fa-address-card" class="list-item__icon"></ons-icon>
             </div>
             <div class="center">
-                Usuario
+                Cuenta
             </div>
             <ons-list class="expandable-content">
-                <ons-list-item tappable>información</ons-list-item>
+                <ons-list-item tappable>Información</ons-list-item>
                 <ons-list-item tappable>Salir</ons-list-item>
             </ons-list>
+        </ons-list-item>
+        <ons-list-item modifier="longdivider" class="itm-list" tappable>
+            <div class="left">
+                <ons-icon icon="fa-info-circle" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center">
+                Ayuda / PQR
+            </div>
         </ons-list-item>
     </ons-list>
 

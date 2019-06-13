@@ -51,50 +51,9 @@
 
 <body>
 
-    <ons-navigator swipeable swipe-target-width="80px" id="myNavigator"></ons-navigator>
-
-    <template id="home.html">
-        <ons-page>
-            <!-- <div style="text-align: center; margin-top: 30px;">
-                <p>
-                    <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
-                </p>
-                <p>
-                    <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float>
-                    </ons-input>
-                </p>
-                <p style="margin-top: 30px;">
-                    <ons-button onclick="login()">Ingresar</ons-button>
-                </p>
-            </div>
-            <ons-button class="button-margin" id="prueba">Enviar alerta</ons-button>
-            <script>
-                ons.getScriptPage().onInit = function () {
-                    console.log('Test')
-                    $('#prueba').click(function () {
-                        ons.notification.alert('Alerta de prueba!')
-                    })
-                }
-
-                function login() {
-                    var username = document.getElementById('username').value;
-                    var password = document.getElementById('password').value;
-                    console.log('Prueba')
-                    var data = "123|12345|";
-                    $.ajax({
-                        url: 'http://www.condominiosenlinea.com/app/m1101v.dll',
-                        type: 'POST',
-                        // contentType: 'application/json',
-                        data: { "importarhtml": data }
-                    }).done(function (data) {
-                        alert(data)
-                    });
-                }
+    <ons-navigator swipe-target-width="80px" id="myNavigator"></ons-navigator>
 
 
-            </script> -->
-        </ons-page>
-    </template>
 
     <template id="forms.html">
         <ons-page id="forms-page">
@@ -186,6 +145,10 @@
                     .pushPage(page.id, { data: { title: page.title } })
             }
         };
+
+        ons.ready(function () {
+            console.log('-> Index');
+         });
     </script>
 
 </body>
