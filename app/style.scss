@@ -39,7 +39,7 @@ main {
 ons-toolbar {
   display: flex !important;
   align-items: center !important;
-  background: linear-gradient(to left, #0d47a1, #1e5dbf) !important;
+  background: linear-gradient(to left, #0d47a1, #2e6ccd) !important;
   box-shadow: none !important;
   // background: $base-color !important;
   // box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.2) !important;
@@ -110,7 +110,7 @@ header {
   height: 90px;
   width: 100%;
   // background: linear-gradient(to bottom left,$base-color, $gradient-base-color);
-  background: linear-gradient(to left, #0d47a1, #1e5dbf) !important;
+  background: linear-gradient(to left, #0d47a1, #2e6ccd) !important;
 
   box-shadow: inset 0px -8px 5px 0 rgba(0, 0, 0, 0.1);
   padding-top: 50px;
@@ -177,6 +177,8 @@ header {
       // text-transform: uppercase;
       font-size: 14px;
       color: #919191;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
     .text {
@@ -194,9 +196,38 @@ header {
     background: #606c88;
     background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
     background: linear-gradient(to right, #3f4c6b, #606c88);
+    box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 0;
 
-    box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
-    padding: 10px 25px;
-    margin: 15px;
+    .header {
+      width: 100%;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 0.8fr 2fr;
+
+      .img {
+        display: flex;
+        align-items: center;
+
+        .sub-img {
+          width: 50px;
+          height: 50px;
+          // background: rgba(255,255,255,0.2);
+          border: 2px solid #FFF;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          text-align: center;
+          // margin: 0 auto;
+
+          ons-icon{
+            color: #FFF;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
   }
 }
