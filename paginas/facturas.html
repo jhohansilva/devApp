@@ -8,9 +8,95 @@
                         <ons-icon size="22px" icon="fa-money-check-alt"></ons-icon>
                     </div>
                 </div>
-                <div class="titulo"></div>
+                <div class="titulo">
+                    <div class="sub">
+                        <div class="first">Factura actual: # 0123456</div>
+                        <div class="second">Pago de administración</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="item">
+                    <div class="first">MAYO/2019</div>
+                    <div class="second">Período</div>
+                </div>
+                <div class="item">
+                    <div class="first">$300.000</div>
+                    <div class="second">Valor</div>
+                </div>
+                <div class="item">
+                    <div class="first">13/06/2019</div>
+                    <div class="second">Fecha de pago</div>
+                </div>
+                <div class="item">
+                    <div class="first">$300.000</div>
+                    <div class="second">Saldo</div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="item">
+                    <ons-button id="btnVerFactura" modifier="large">
+                        <ons-icon size="16px" icon="fa-file-download" style="margin-right: 8px;"></ons-icon>
+                        Ver factura
+                    </ons-button>
+                </div>
+                <div class="item">
+                    <ons-button id="btnPagar" modifier="large">
+                        <ons-icon size="16px" icon="fa-credit-card" style="margin-right: 8px;"
+                            style="background: #FFC107!important;"></ons-icon>
+                        Pagar
+                    </ons-button>
+                </div>
             </div>
         </ons-card>
+
+        <div class="historial">
+            <ons-list-header>Historial de facturación</ons-list-header>
+            <ons-list-item>
+                <div class="left">
+                    <ons-icon size="22px" icon="fa-money-check" class="list-item__thumbnail"></ons-icon>
+                </div>
+                <div class="center">
+                    <span class="list-item__title">Periodo: 05/06/2019</span>
+                    <span class="list-item__subtitle">$300.000 - Pagada</span>
+                </div>
+            </ons-list-item>
+            <ons-list-item>
+                <div class="left">
+                    <ons-icon size="22px" icon="fa-money-check" class="list-item__thumbnail"></ons-icon>
+                </div>
+                <div class="center">
+                    <span class="list-item__title">Periodo: 05/05/2019</span>
+                    <span class="list-item__subtitle">$300.000 - Pagada</span>
+                </div>
+            </ons-list-item>
+            <ons-list-item>
+                <div class="left">
+                    <ons-icon size="22px" icon="fa-money-check" class="list-item__thumbnail"></ons-icon>
+                </div>
+                <div class="center">
+                    <span class="list-item__title">Periodo: 05/04/2019</span>
+                    <span class="list-item__subtitle">$300.000 - Pagada</span>
+                </div>
+            </ons-list-item>
+        </div>
     </main>
+    <ons-alert-dialog id="dialog-1">
+        <div class="alert-dialog-title">Cargando...</div>
+        <div class="alert-dialog-content" style="text-align: center;">
+            <ons-progress-circular indeterminate></ons-progress-circular>
+        </div>
+    </ons-alert-dialog>
+    <script>
+        document.querySelector('ons-tabbar').addEventListener('postchange', function () {
+            console.log(this.getActiveTabIndex())
+            if (this.getActiveTabIndex() == 1) {
+                document.getElementById('dialog-1').show();
+                setTimeout(function () {
+                    document.getElementById('dialog-1').hide();
+                }, 2000)
+            }
+        })
+    </script>
 </ons-page>
 <!-- </template> -->

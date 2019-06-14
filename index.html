@@ -17,21 +17,22 @@
     <script src="js/onsenui.min.js"></script>
     <script>
         $(document).ready(function () {
-            // if (
-            //     validarSesion()
-            //     && localStorage.sesion != 'false'
-            //     && localStorage.sesion.trim().length > 0
-            // ) document.querySelector('#myNavigator').pushPage('paginas/main.html');
-            // // else document.querySelector('#myNavigator').pushPage('login/login.html');
+            if (
+                validarSesion()
+                && localStorage.sesion != 'false'
+                && localStorage.sesion
+            ) document.querySelector('#myNavigator').pushPage('paginas/main.html');
+            else document.querySelector('#myNavigator').pushPage('login/login.html');
+
             // else document.querySelector('#myNavigator').pushPage('paginas/main.html');
-            document.querySelector('#myNavigator').pushPage('paginas/main.html');
+            // document.querySelector('#myNavigator').pushPage('paginas/main.html');
         })
 
         function validarSesion() {
             var retornar = false;
             var sesionVar = localStorage.sesion;
             $.ajax({
-                url: 'http://192.168.42.146/titanapp/inc/sesion.php',
+                url: 'http://80.211.145.146/devp/sesion.php',
                 data: { sesion: sesionVar },
                 type: 'POST',
                 async: false,
@@ -53,8 +54,6 @@
 <body>
 
     <ons-navigator swipe-target-width="80px" id="myNavigator"></ons-navigator>
-
-
 
     <template id="forms.html">
         <ons-page id="forms-page">

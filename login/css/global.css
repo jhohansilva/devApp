@@ -25,13 +25,14 @@ main {
 }
 
 #login header {
-  width: 100%;
-  height: 40%;
-  background: #012362;
-  background-image: url(https://www.marthadebayle.com/wp-content/uploads/2017/09/edificio-850x585.jpg);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  position: relative;
+  width: 100% !important;
+  height: 40% !important;
+  background: #012362 !important;
+  background-image: url(https://www.marthadebayle.com/wp-content/uploads/2017/09/edificio-850x585.jpg) !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  position: relative !important;
+  padding: 0;
 }
 #login header::before {
   content: "";
@@ -126,7 +127,8 @@ main {
   position: relative;
   color: #666;
 }
-.content #login ons-button {
+
+#login #enviar {
   padding: 25px 0px !important;
   height: auto !important;
   min-height: auto !important;

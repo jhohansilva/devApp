@@ -52,7 +52,7 @@ ons-toolbar {
     color: #fff !important;
     font-family: NunitoSans-Regular !important;
     // text-transform: uppercase !important;
-    font-size: 14px !important;
+    font-size: 18px !important;
     letter-spacing: 0.5px;
   }
 
@@ -63,14 +63,42 @@ ons-toolbar {
   }
 }
 
+ons-splitter-mask {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 #side-nav {
+  box-shadow: 0 0px 14px rgba(0, 0, 0, 0.08);
+
+  .img-content {
+    .img-user {
+      background: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      margin-left: 20px;
+      position: relative;
+      top: 0px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+      a {
+        margin: 0 auto;
+        font-size: 28px;
+        font-family: NunitoSans-Black !important;
+        color: #ff9800;
+      }
+    }
+  }
+
   .page__content {
     background: #fff !important;
   }
 
   .header-nav {
     width: 100%;
-    height: 150px;
+    height: 180px;
     background: $base-color;
     position: relative;
     box-shadow: inset 0px -4px 5px 0 rgba(0, 0, 0, 0.08);
@@ -132,14 +160,13 @@ header {
 
   ons-card {
     box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
-    padding: 10px 25px;
+    padding: 15px 25px;
     margin: 15px;
 
     .header-card {
       display: grid;
       grid-gap: 10px;
       grid-template-columns: 0.8fr 2fr;
-      margin-bottom: 10px;
     }
 
     .left,
@@ -193,19 +220,20 @@ header {
 
 #facturas {
   .factura {
-    background: #606c88;
-    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
-    background: linear-gradient(to right, #3f4c6b, #606c88);
-    box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 10px 15px;
-    margin: 15px 0;
-    border-radius: 0;
+    // background: linear-gradient(to right, #3f4c6b, #606c88);
+    background: #fff;
+    box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
+    padding: 25px 15px 10px 15px;
+    margin: 15px;
+    border-radius: 3px;
 
     .header {
       width: 100%;
       display: grid;
       grid-gap: 10px;
-      grid-template-columns: 0.8fr 2fr;
+      grid-template-columns: 0.4fr 2fr;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 20px;
 
       .img {
         display: flex;
@@ -214,20 +242,110 @@ header {
         .sub-img {
           width: 50px;
           height: 50px;
-          // background: rgba(255,255,255,0.2);
-          border: 2px solid #FFF;
+          background: rgba(0, 0, 0, 0.04);
+          // border: 2px solid #616161;
           border-radius: 100%;
           display: flex;
           align-items: center;
           text-align: center;
           // margin: 0 auto;
 
-          ons-icon{
-            color: #FFF;
+          ons-icon {
+            color: #215ebc;
             margin: 0 auto;
           }
         }
       }
+
+      .titulo {
+        color: #333;
+        font-family: NunitoSans-Regular !important;
+        display: flex;
+        align-items: center;
+
+        div {
+          width: 100%;
+        }
+
+        .first {
+          font-family: NunitoSans-SemiBold !important;
+          font-size: 24px;
+        }
+
+        .second {
+          font-family: NunitoSans-Regular !important;
+          font-size: 14px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .content {
+      width: 100%;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      padding: 15px 0px 15px 0px;
+      box-sizing: border-box;
+
+      div {
+        color: #616161;
+      }
+
+      .item {
+        text-align: center;
+
+        .first {
+          font-family: NunitoSans-SemiBold !important;
+          font-size: 18px;
+        }
+
+        .second {
+          font-family: NunitoSans-Regular !important;
+          font-size: 12px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .footer {
+      width: 100%;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 1fr 1fr;
+
+      ons-button {
+        padding: 20px 0px !important;
+        height: auto !important;
+        min-height: auto !important;
+        line-height: 0 !important;
+        background: #ccc;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+        color: #fff;
+        font-size: 18px;
+        text-transform: capitalize;
+        font-family: NunitoSans-SemiBold;
+        margin-top: 5px;
+      }
+
+      #btnVerFactura {
+        background: #fff !important;
+        color: #215ebc;
+        border: 1px solid #215ebc;
+      }
+
+      #btnPagar {
+        background: #ffc107 !important;
+      }
+    }
+  }
+
+  .historial {
+    ons-icon {
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+      color:#616161;
     }
   }
 }
