@@ -67,6 +67,10 @@ ons-splitter-mask {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.back-button--material__icon {
+  fill: #fff;
+}
+
 #side-nav {
   box-shadow: 0 0px 14px rgba(0, 0, 0, 0.08);
 
@@ -220,72 +224,12 @@ header {
 
 #facturas {
   .factura {
-    // background: linear-gradient(to right, #3f4c6b, #606c88);
-    background: #fff;
-    box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
-    padding: 25px 15px 10px 15px;
-    margin: 15px;
-    border-radius: 3px;
-
-    .header {
-      width: 100%;
-      display: grid;
-      grid-gap: 10px;
-      grid-template-columns: 0.4fr 2fr;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      padding-bottom: 20px;
-
-      .img {
-        display: flex;
-        align-items: center;
-
-        .sub-img {
-          width: 50px;
-          height: 50px;
-          background: rgba(0, 0, 0, 0.04);
-          // border: 2px solid #616161;
-          border-radius: 100%;
-          display: flex;
-          align-items: center;
-          text-align: center;
-          // margin: 0 auto;
-
-          ons-icon {
-            color: #215ebc;
-            margin: 0 auto;
-          }
-        }
-      }
-
-      .titulo {
-        color: #333;
-        font-family: NunitoSans-Regular !important;
-        display: flex;
-        align-items: center;
-
-        div {
-          width: 100%;
-        }
-
-        .first {
-          font-family: NunitoSans-SemiBold !important;
-          font-size: 24px;
-        }
-
-        .second {
-          font-family: NunitoSans-Regular !important;
-          font-size: 14px;
-          text-transform: uppercase;
-        }
-      }
-    }
-
     .content {
       width: 100%;
       display: grid;
       grid-gap: 10px;
       grid-template-columns: 1fr 1fr;
-      padding: 15px 0px 15px 0px;
+      // padding: 15px 0px 15px 0px;
       box-sizing: border-box;
 
       div {
@@ -314,20 +258,6 @@ header {
       grid-gap: 10px;
       grid-template-columns: 1fr 1fr;
 
-      ons-button {
-        padding: 20px 0px !important;
-        height: auto !important;
-        min-height: auto !important;
-        line-height: 0 !important;
-        background: #ccc;
-        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
-        color: #fff;
-        font-size: 18px;
-        text-transform: capitalize;
-        font-family: NunitoSans-SemiBold;
-        margin-top: 5px;
-      }
-
       #btnVerFactura {
         background: #fff !important;
         color: #215ebc;
@@ -336,6 +266,7 @@ header {
 
       #btnPagar {
         background: #ffc107 !important;
+        border: 1px solid #ffc107;
       }
     }
   }
@@ -345,7 +276,125 @@ header {
       display: flex;
       align-items: center;
       margin: 0 auto;
-      color:#616161;
+      color: #616161;
     }
   }
+}
+
+.compact {
+  padding: 15px !important;
+  .header {
+    padding-bottom: 15px !important;
+  }
+}
+
+.card-full {
+  background: #fff;
+  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
+  padding: 25px 15px 10px 15px;
+  margin: 0 0 15px 0;
+  box-sizing: border-box;
+
+  .header {
+    width: 100%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 0.4fr 2fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 20px;
+
+    .img {
+      display: flex;
+      align-items: center;
+
+      .sub-img {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.04);
+        // border: 2px solid #616161;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        // margin: 0 auto;
+
+        ons-icon {
+          color: #215ebc;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .titulo {
+      color: #333;
+      font-family: NunitoSans-Regular !important;
+      display: flex;
+      align-items: center;
+
+      div {
+        width: 100%;
+      }
+
+      .first {
+        font-family: NunitoSans-SemiBold !important;
+        font-size: 24px;
+      }
+
+      .second {
+        font-family: NunitoSans-Regular !important;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .content {
+    padding: 15px 15px 5px 15px;
+    box-sizing: border-box;
+
+    label {
+      font-size: 14px;
+      font-family: NunitoSans-SemiBold;
+      color: #666;
+    }
+  }
+}
+
+[type="month"],
+select {
+  width: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  background: #fff;
+  border-bottom: 1px solid #afafaf !important;
+  border: none;
+  color: #333 !important;
+  font-size: 18px;
+  font-family: NunitoSans-SemiBold;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("../../img/br_down.png") white no-repeat;
+  background: url("../../img/br_down.png") white no-repeat calc(100% - 10px) !important;
+  background-size: 3% !important;
+}
+
+input[type="month"]:not(.has-value):before {
+  color: #333;
+  content: attr(placeholder);
+}
+
+ons-button {
+  padding: 20px 0px !important;
+  height: auto !important;
+  min-height: auto !important;
+  line-height: 0 !important;
+  background: #ccc;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1)!important;
+  color: #fff;
+  font-size: 18px!important;
+  text-transform: capitalize!important;
+  font-family: NunitoSans-SemiBold!important;
+  margin-top: 5px!important;
 }

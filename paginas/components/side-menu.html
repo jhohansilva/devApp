@@ -34,8 +34,8 @@
                 Reportes
             </div>
             <ons-list class="expandable-content">
-                <ons-list-item>Cartera</ons-list-item>
-                <ons-list-item tappable onclick="fn.pushPage({'id': 'noticia1.html', 'title': 'Noticia 1'})">
+                <ons-list-item tappable id="btnCartera">Cartera</ons-list-item>
+                <ons-list-item tappable>
                     Facturación</ons-list-item>
                 <ons-list-item tappable>Pagos</ons-list-item>
                 <ons-list-item tappable>Publicaciones</ons-list-item>
@@ -68,6 +68,10 @@
             // Set ons-splitter-side animation
             this.parentElement.setAttribute('animation', ons.platform.isAndroid() ? 'overlay' : 'reveal');
         };
+
+        document.getElementById('btnCartera').addEventListener('click', function () {
+            fn.pushPage({ 'id': 'paginas/procesos.cartera.html', 'title': 'Cartera' })
+        });
     </script>
 </ons-page>
 <!-- </template> -->

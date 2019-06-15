@@ -1,0 +1,47 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button>Home</ons-back-button>
+        </div>
+        <div class="center"></div>
+    </ons-toolbar>
+    <main>
+        <ons-card class="factura card-full compact">
+            <div class="header">
+                <div class="img">
+                    <div class="sub-img">
+                        <ons-icon size="22px" icon="fa-wallet"></ons-icon>
+                    </div>
+                </div>
+                <div class="titulo">
+                    <div class="sub">
+                        <div class="first">Reporte de cartera</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <p>
+                    <label>Período corte:</label>
+                    <input id="date" placeholder="Seleccione" type="month"
+                        onchange="this.className=(this.value!=''?'has-value':'')">
+                </p>
+                <p>
+                    <label>Tipo proceso:</label>
+                    <select id="choose-sel">
+                        <option value="basic">Total</option>
+                        <option value="material">Seleccionar unidad</option>
+                    </select>
+                </p>
+                <ons-button id="btnVerFactura" modifier="large" style="padding: 24px 0!important;">
+                    <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
+                    Consultar
+                </ons-button>
+            </div>
+        </ons-card>
+    </main>
+    <script>
+        ons.getScriptPage().onInit = function () {
+            this.querySelector('ons-toolbar div.center').textContent = this.data.title;
+        };
+    </script>
+</ons-page>

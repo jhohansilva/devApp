@@ -66,71 +66,12 @@
         </ons-page>
     </template>
 
-    <template id="animations.html">
-        <ons-page>
-            <!-- <ons-list>
-                    <ons-list-header>Transitions</ons-list-header>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'none'}, 'none')">
-                        none
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'default'}, 'default')">
-                        default
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'slide-ios'}, 'slide-ios')">
-                        slide-ios
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'slide-md'}, 'slide-md')">
-                        slide-md
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'lift-ios'}, 'lift-ios')">
-                        lift-ios
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'lift-md'}, 'lift-md')">
-                        lift-md
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'fade-ios'}, 'fade-ios')">
-                        fade-ios
-                    </ons-list-item>
-                    <ons-list-item modifier="chevron"
-                        onclick="fn.pushPage({'id': 'transition.html', 'title': 'fade-md'}, 'fade-md')">
-                        fade-md
-                    </ons-list-item>
-                </ons-list> -->
-        </ons-page>
-    </template>
-
-    <template id="noticia1.html">
-        <ons-page>
-            <ons-toolbar>
-                <div class="left">
-                    <ons-back-button>Home</ons-back-button>
-                </div>
-                <div class="center"></div>
-                <div class="right">
-                    <ons-toolbar-button id="info-button" onclick="fn.showDialog('popover-dialog')"></ons-toolbar-button>
-                </div>
-            </ons-toolbar>
-            <ons-card>
-                <div class="title">Noticia de prueba 1</div>
-                <div class="content">Simple "pull to refresh" functionality to update data.</div>
-            </ons-card>
-            <script>
-                ons.getScriptPage().onInit = function () {
-                    this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-                };
-            </script>
-        </ons-page>
-    </template>
-
     <script type="text/javascript" src="cordova.js"></script>
     <script>
+        ons.ready(function () {
+            console.log('-> Index');
+        });
+
         window.fn = {};
 
         window.fn.toggleMenu = function () {
@@ -146,9 +87,7 @@
             }
         };
 
-        ons.ready(function () {
-            console.log('-> Index');
-        });
+
     </script>
 
 </body>

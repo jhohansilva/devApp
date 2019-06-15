@@ -65,6 +65,10 @@ ons-splitter-mask {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.back-button--material__icon {
+  fill: #fff;
+}
+
 #side-nav {
   box-shadow: 0 0px 14px rgba(0, 0, 0, 0.08);
 }
@@ -190,62 +194,11 @@ header .title-header {
   color: #333;
 }
 
-#facturas .factura {
-  background: #fff;
-  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
-  padding: 25px 15px 10px 15px;
-  margin: 15px;
-  border-radius: 3px;
-}
-#facturas .factura .header {
-  width: 100%;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 0.4fr 2fr;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 20px;
-}
-#facturas .factura .header .img {
-  display: flex;
-  align-items: center;
-}
-#facturas .factura .header .img .sub-img {
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-#facturas .factura .header .img .sub-img ons-icon {
-  color: #215ebc;
-  margin: 0 auto;
-}
-#facturas .factura .header .titulo {
-  color: #333;
-  font-family: NunitoSans-Regular !important;
-  display: flex;
-  align-items: center;
-}
-#facturas .factura .header .titulo div {
-  width: 100%;
-}
-#facturas .factura .header .titulo .first {
-  font-family: NunitoSans-SemiBold !important;
-  font-size: 24px;
-}
-#facturas .factura .header .titulo .second {
-  font-family: NunitoSans-Regular !important;
-  font-size: 14px;
-  text-transform: uppercase;
-}
 #facturas .factura .content {
   width: 100%;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
-  padding: 15px 0px 15px 0px;
   box-sizing: border-box;
 }
 #facturas .factura .content div {
@@ -269,19 +222,6 @@ header .title-header {
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
 }
-#facturas .factura .footer ons-button {
-  padding: 20px 0px !important;
-  height: auto !important;
-  min-height: auto !important;
-  line-height: 0 !important;
-  background: #ccc;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
-  color: #fff;
-  font-size: 18px;
-  text-transform: capitalize;
-  font-family: NunitoSans-SemiBold;
-  margin-top: 5px;
-}
 #facturas .factura .footer #btnVerFactura {
   background: #fff !important;
   color: #215ebc;
@@ -289,12 +229,119 @@ header .title-header {
 }
 #facturas .factura .footer #btnPagar {
   background: #ffc107 !important;
+  border: 1px solid #ffc107;
 }
 #facturas .historial ons-icon {
   display: flex;
   align-items: center;
   margin: 0 auto;
   color: #616161;
+}
+
+.compact {
+  padding: 15px !important;
+}
+.compact .header {
+  padding-bottom: 15px !important;
+}
+
+.card-full {
+  background: #fff;
+  box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.06);
+  padding: 25px 15px 10px 15px;
+  margin: 0 0 15px 0;
+  box-sizing: border-box;
+}
+.card-full .header {
+  width: 100%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 0.4fr 2fr;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 20px;
+}
+.card-full .header .img {
+  display: flex;
+  align-items: center;
+}
+.card-full .header .img .sub-img {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.card-full .header .img .sub-img ons-icon {
+  color: #215ebc;
+  margin: 0 auto;
+}
+.card-full .header .titulo {
+  color: #333;
+  font-family: NunitoSans-Regular !important;
+  display: flex;
+  align-items: center;
+}
+.card-full .header .titulo div {
+  width: 100%;
+}
+.card-full .header .titulo .first {
+  font-family: NunitoSans-SemiBold !important;
+  font-size: 24px;
+}
+.card-full .header .titulo .second {
+  font-family: NunitoSans-Regular !important;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.card-full .content {
+  padding: 15px 15px 5px 15px;
+  box-sizing: border-box;
+}
+.card-full .content label {
+  font-size: 14px;
+  font-family: NunitoSans-SemiBold;
+  color: #666;
+}
+
+[type=month],
+select {
+  width: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  background: #fff;
+  border-bottom: 1px solid #afafaf !important;
+  border: none;
+  color: #333 !important;
+  font-size: 18px;
+  font-family: NunitoSans-SemiBold;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("../../img/br_down.png") white no-repeat;
+  background: url("../../img/br_down.png") white no-repeat calc(100% - 10px) !important;
+  background-size: 3% !important;
+}
+
+input[type=month]:not(.has-value):before {
+  color: #333;
+  content: attr(placeholder);
+}
+
+ons-button {
+  padding: 20px 0px !important;
+  height: auto !important;
+  min-height: auto !important;
+  line-height: 0 !important;
+  background: #ccc;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1) !important;
+  color: #fff;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+  font-family: NunitoSans-SemiBold !important;
+  margin-top: 5px !important;
 }
 
 /*# sourceMappingURL=global.css.map */
