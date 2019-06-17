@@ -36,6 +36,8 @@ main {
   background-repeat: no-repeat !important;
   position: relative !important;
   padding: 0;
+  display: flex;
+  align-items: center;
 
   &::before {
     content: "";
@@ -47,8 +49,14 @@ main {
   }
 
   #logo {
-    text-align: center;
-    // margin-bottom: 100px;
+    width: 200px;
+    height: 80px;
+    margin: 0 auto;
+    z-index: 999999;
+
+    img{
+      width: 100%;
+    }
   }
 }
 

@@ -89,7 +89,6 @@
     </ons-alert-dialog>
     <script>
         document.querySelector('ons-tabbar').addEventListener('postchange', function () {
-            console.log(this.getActiveTabIndex())
             if (this.getActiveTabIndex() == 1) {
                 document.getElementById('dialog-1').show();
                 setTimeout(function () {

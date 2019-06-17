@@ -14,39 +14,23 @@
     <link rel="stylesheet" href="css/global/global.css">
 
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/onsenui.min.js"></script>
+    <script src="js/onsen/onsenui.min.js"></script>
     <script>
         $(document).ready(function () {
-            if (
-                validarSesion()
-                && localStorage.sesion != 'false'
-                && localStorage.sesion
-            ) document.querySelector('#myNavigator').pushPage('paginas/main.html');
-            else document.querySelector('#myNavigator').pushPage('login/login.html');
-
-            // else document.querySelector('#myNavigator').pushPage('paginas/main.html');
-            // document.querySelector('#myNavigator').pushPage('paginas/main.html');
+            validarSesion()
+            document.querySelector('#myNavigator').pushPage('paginas/main.html');
         })
 
         function validarSesion() {
-            var retornar = false;
-            var sesionVar = localStorage.sesion;
-            $.ajax({
-                url: 'http://80.211.145.146/devp/sesion.php',
-                data: { sesion: sesionVar },
-                type: 'POST',
-                async: false,
-                dataType: "json",
-            }).done(function (data) {
-                console.log(data);
-                if (data.cod == '00') retornar = true;
-                else {
-                    localStorage.sesion = false;
-                    retornar = false;
+            send_data({
+                data: { item: this.$param },
+                dataType: 'json',
+                method: 'request001',
+                url: "http://192.168.42.146/titanapp/inc/clients.php",
+                callback: function (data) {
+                    console.log(data);
                 }
             })
-
-            return retornar;
         }
     </script>
 </head>
@@ -67,6 +51,7 @@
     </template>
 
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
     <script>
         ons.ready(function () {
             console.log('-> Index');

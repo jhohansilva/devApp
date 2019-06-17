@@ -1,25 +1,30 @@
 <!-- <template id="tabbar.html"> -->
-    <ons-page id="tabbar-page">
-        <ons-toolbar>
-            <div class="center">Principal</div>
-            <div class="left">
-                <ons-toolbar-button onclick="fn.toggleMenu()">
-                    <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
-                </ons-toolbar-button>
-            </div>
-        </ons-toolbar>
-        <ons-tabbar swipeable id="appTabbar" position="bottom">
-            <ons-tab label="Principal" icon="fa-home" page="paginas/home.html" active></ons-tab>
-            <ons-tab label="Facturas" icon="fa-money-check-alt" page="paginas/facturas.html"></ons-tab>
-            <ons-tab label="Clasificados" icon="fa-newspaper" page="forms.html"></ons-tab>
-        </ons-tabbar>
+<ons-page id="tabbar-page">
+    <ons-toolbar>
+        <div class="center"></div>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.toggleMenu()">
+                <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <ons-tabbar swipeable id="appTabbar" position="bottom">
+        <ons-tab label="Principal" icon="fa-home" page="paginas/home.html" active></ons-tab>
+        <ons-tab label="Facturas" icon="fa-money-check-alt" page="paginas/facturas.html"></ons-tab>
+        <ons-tab label="Clasificados" icon="fa-newspaper" page="forms.html"></ons-tab>
+    </ons-tabbar>
 
-        <script>
-            ons.getScriptPage().addEventListener('prechange', function (event) {
-                if (event.target.matches('#appTabbar')) {
+    <script>
+        ons.getScriptPage().addEventListener('prechange', function (event) {
+            if (event.target.matches('#appTabbar')) {
+                var label = event.tabItem.getAttribute('label');
+                if (label != 'Principal') {
                     event.currentTarget.querySelector('ons-toolbar .center').innerHTML = event.tabItem.getAttribute('label');
+                }else{
+                    event.currentTarget.querySelector('ons-toolbar .center').innerHTML = '';
                 }
-            });
-        </script>
-    </ons-page>
+            }
+        });
+    </script>
+</ons-page>
 <!-- </template> -->
