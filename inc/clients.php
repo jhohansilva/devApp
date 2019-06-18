@@ -28,6 +28,7 @@ if (verificarTrans($_SERVER)) {
                     break;
             }
 
+            // print_r(json_encode($out)); // Respuesta de salida
             print_r($out); // Respuesta de salida
 
         } catch (Exception $e) {
@@ -35,7 +36,7 @@ if (verificarTrans($_SERVER)) {
         }
     }
 } else {
-    print_r(getError('-1', 'Acceso denegado'));
+    print_r(getJson('-1', 'error', 'Acceso denegado'));
     // header('Location: http://google.com');
 }
 
