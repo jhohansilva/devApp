@@ -1,0 +1,3 @@
+0 -> Sin errores
+-1 -> Error visibles
+-2 -> Errores DB

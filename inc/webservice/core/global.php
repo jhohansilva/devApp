@@ -1,5 +1,5 @@
 <?php
-$_MAIN = 'http://localhost/titanApp/';
+$_MAIN = 'http://localhost/devApp/';
 
 
 // Métodos globales

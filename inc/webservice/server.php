@@ -13,40 +13,40 @@ $urn = 'urn:app';
 $server->configureWSDL('titanApp', $urn);
 $server->wsdl->schemaTargetNamespace = $namespace;
 
-$server->wsdl->addComplexType(
-    'ArrayOfString',
-    'complexType',
-    'array',
-    'sequence',
-    '',
-    array(
-        'itemName' => array(
-            'name' => 'itemName',
-            'type' => 'xsd:string',
-            'minOccurs' => '0',
-            'maxOccurs' => 'unbounded',
-        ),
-    )
-);
-
 // $server->wsdl->addComplexType(
-//     'infoReturn',
-//     'complextType',
-//     'struct',
+//     'ArrayOfString',
+//     'complexType',
+//     'array',
 //     'sequence',
 //     '',
 //     array(
-//         'codigo' => array('name' => 'code', 'type' => 'xsd:string'),
-//         'titulo' => array('name' => 'titulo', 'type' => 'xsd:string'),
-//         'detalle' => array('name' => 'detalle', 'type' => 'xsd:string'),
+//         'itemName' => array(
+//             'name' => 'itemName',
+//             'type' => 'xsd:string',
+//             'minOccurs' => '0',
+//             'maxOccurs' => 'unbounded',
+//         ),
 //     )
 // );
 
+$server->wsdl->addComplexType(
+    'infoReturn',
+    'complextType',
+    'struct',
+    'sequence',
+    '',
+    array(
+        'codigo' => array('name' => 'code', 'type' => 'xsd:string'),
+        'titulo' => array('name' => 'titulo', 'type' => 'xsd:string'),
+        'detalle' => array('name' => 'detalle', 'type' => 'xsd:string'),
+    )
+);
+
 $server->register('logeo',
     ['correo' => 'xsd:string', 'clave' => 'xsd:string'],
-    // ['data' => 'tns:infoReturn'],
+    ['data' => 'tns:infoReturn'],
     // ['data' => 'tns:ArrayOfString'],
-    ['data' => 'xsd:string'],
+    // ['data' => 'xsd:string'],
     $urn,
     $urn . '#logeo'
 );

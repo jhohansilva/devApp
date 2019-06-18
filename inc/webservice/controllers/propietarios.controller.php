@@ -24,13 +24,9 @@ class propietarios_controller
             $out = getError('La contraseña debe contener más de 6 carácteres');
         } else {
             $clave = preg_replace('/\s+/', '', $clave);
-            // $out = getArray('0', 'correcto', $clave);
             $out = $this->propietarios_obj->logeo_mdl($correo, $clave);
         }
-
+        
         return $out;
-        // return $this->propietarios_obj->get_info_producto_mdl(
-        //     filter_var($item, FILTER_SANITIZE_STRING)
-        // );
     }
 }

@@ -24,12 +24,12 @@ if (verificarTrans($_SERVER)) {
                     $out = $client->call('logeo', $_POST);
                     break;
                 default:
-                    $out = getError('-1', 'Método sin definir');
+                    $out = getError('Método sin definir');
                     break;
             }
 
-            // print_r(json_encode($out)); // Respuesta de salida
-            print_r($out); // Respuesta de salida
+            print_r(json_encode($out)); // Respuesta de salida
+            // print_r($out); // Respuesta de salida
 
         } catch (Exception $e) {
             print_r('Error');
