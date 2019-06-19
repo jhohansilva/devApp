@@ -7,7 +7,7 @@ class conectar
     {
         // Datos conexión
         $_SERVIDOR_DB = 'localhost';
-        $_USUARIO_DB = 'rot';
+        $_USUARIO_DB = 'root';
         $_PASS_DB = '';
         $_DB = 'titans_app';
 
@@ -18,7 +18,7 @@ class conectar
                 // die("Error en la conexion 16" . $conexion->connect_error);
                 return ['codigo' => '-2', 'titulo' => 'error', 'detalle' => "Error en la conexión: " . $conexion->connect_error];
             }
-            return $conexion;
+            return ['codigo' => '0', 'obj' => $conexion];
         } catch (Exception $e) {
             return ['codigo' => '-2', 'titulo' => 'error', 'detalle' => "Error en la conexión: " . $conexion->connect_error];
         }

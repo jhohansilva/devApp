@@ -1,30 +1,32 @@
 <!-- <template id="login.html"> -->
 <ons-page>
-    <main  id="login">
+    <main id="login">
         <header>
             <div id="logo">
                 <img src="./img/logo_blanco.png" />
             </div>
         </header>
         <div class="content">
-            <div class="form">
-                <div class="title">Inicio de sesión</div>
-                <ons-input autocomplete="off" autocorrect="off" autocapitalize="off" id="username" type="text"
-                    modifier="underbar" placeholder="Correo electrónico" float></ons-input>
-                <ons-input autocomplete="off" autocorrect="off" autocapitalize="off" id="pass" type="password"
-                    modifier="underbar" placeholder="Contraseña" float></ons-input>
-                <ons-icon class="togglePass" icon="ion-eye-disabled" size="27px"></ons-icon>
-                <ons-list-item style="padding: 0;">
-                    <div class="center labelSwitch">
-                        Recordar cuenta
-                    </div>
-                    <div class="left">
-                        <ons-switch></ons-switch>
-                    </div>
-                </ons-list-item>
-                <ons-button id="enviar" modifier="large">Ingresar</ons-button>
-                <div class="recoverPass"><a href="#">Recuperar contraseña</a></div>
-            </div>
+            <form id="logeo">
+                <div class="form">
+                    <div class="title">Inicio de sesión</div>
+                    <ons-input autocomplete="off" autocorrect="off" autocapitalize="off" id="username" type="text"
+                        modifier="underbar" placeholder="Correo electrónico" name="correo" float></ons-input>
+                    <ons-input autocomplete="off" autocorrect="off" autocapitalize="off" id="pass" type="password"
+                        modifier="underbar" placeholder="Contraseña" name="clave" float></ons-input>
+                    <ons-icon class="togglePass" icon="ion-eye-disabled" size="27px"></ons-icon>
+                    <ons-list-item style="padding: 0;">
+                        <div class="center labelSwitch">
+                            Recordar cuenta
+                        </div>
+                        <div class="left">
+                            <ons-switch></ons-switch>
+                        </div>
+                    </ons-list-item>
+                    <ons-button id="enviar" modifier="large">Ingresar</ons-button>
+                    <div class="recoverPass"><a href="#">Recuperar contraseña</a></div>
+                </div>
+            </form>
         </div>
     </main>
     <script>
@@ -46,19 +48,34 @@
         };
 
         function login(e) {
-            var username = $('#username').val();
+            var username = $('#username').val().toLowerCase();
             var pass = $('#pass').val();
 
             if (username.length < 1) sendToast('Ingresa un correo electrónico');
-            else if (pass.length < 1) sendToast('Ingresa una contraseña'); 
+            else if (pass.length < 1) sendToast('Ingresa una contraseña');
             else {
-                localStorage.sesion = '123456';
-                location.reload();
+                // location.reload();
+                console.log();
+                send_data({
+                    data: $('#logeo').serialize(),
+                    dataType: 'json',
+                    method: 'logeo',
+                    url: "http://192.168.42.146/titanapp/inc/clients.php",
+                    // url: "http://192.168.0.64/devapp/inc/clients.php",
+                    callback: function (data) {
+                        if (data.codigo == '0') {
+                            console.log(data.detalle);
+                            ons.notification.alert(data.detalle);
+                        } else {
+                            sendToast(data.detalle);
+                        }
+                    }
+                })
             }
         }
 
         function sendToast(msg) {
-            ons.notification.toast(msg, { timeout: 1000, animation: 'ascend' })
+            ons.notification.toast(msg, { timeout: 1500, animation: 'ascend' })
         }
     </script>
 </ons-page>

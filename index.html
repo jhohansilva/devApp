@@ -17,18 +17,17 @@
     <script src="js/onsen/onsenui.min.js"></script>
     <script>
         $(document).ready(function () {
-            console.log('->')
-            validarSesion()
-            // document.querySelector('#myNavigator').pushPage('paginas/main.html');
+            // validarSesion()
+            document.querySelector('#myNavigator').pushPage('login/login.html');
         })
 
         function validarSesion() {
             send_data({
-                data: { correo: 'jhohanf@prueba.com' , clave: '1234567'},
+                data: { correo: 'jhohanf.silva@gmail.com' , clave: '1234567'},
                 dataType: 'json',
                 method: 'logeo',
-                // url: "http://192.168.42.146/titanapp/inc/clients.php",
-                url: "http://192.168.0.64/devapp/inc/clients.php",
+                url: "http://192.168.42.146/titanapp/inc/clients.php",
+                // url: "http://192.168.0.64/devapp/inc/clients.php",
                 callback: function (data) {
                     console.log(data);
                 }
