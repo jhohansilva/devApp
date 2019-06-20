@@ -18,20 +18,52 @@
     <script>
         $(document).ready(function () {
             // validarSesion()
-            document.querySelector('#myNavigator').pushPage('login/login.html');
+            if (getCookie('sesion')) {
+                document.querySelector('#myNavigator').pushPage('paginas/main.html');
+            } else {
+                if (localStorage.email && localStorage.clave) {
+                    var datos = 'correo=' + localStorage.email
+                        + '&clave=' + localStorage.clave;
+
+                    var res = _validarLogin(datos);
+                    if (res.codigo == '0') {
+                        document.cookie = "sesion=valid; max-age=300; path=/";
+                    } else {
+                        localStorage.removeItem('clave');
+                        localStorage.removeItem('email');
+                    }
+
+                    location.reload();
+                } else {
+                    document.querySelector('#myNavigator').pushPage('login/login.html');
+                }
+            }
         })
 
-        function validarSesion() {
+        function _validarLogin(dataSend) {
+            var retornar;
+
             send_data({
-                data: { correo: 'jhohanf.silva@gmail.com' , clave: '1234567'},
+                data: dataSend,
                 dataType: 'json',
                 method: 'logeo',
                 url: "http://192.168.42.146/titanapp/inc/clients.php",
                 // url: "http://192.168.0.64/devapp/inc/clients.php",
                 callback: function (data) {
-                    console.log(data);
+                    retornar = data;
                 }
             })
+
+            return retornar;
+        }
+
+        function sendToast(msg) {
+            ons.notification.toast(msg, { timeout: 1500, animation: 'ascend' })
+        }
+
+        window.getCookie = function (name) {
+            var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            if (match) return match[2];
         }
     </script>
 </head>

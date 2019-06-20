@@ -1,4 +1,3 @@
-<!-- <template id="login.html"> -->
 <ons-page>
     <main id="login">
         <header>
@@ -47,36 +46,23 @@
             });
         };
 
-        function login(e) {
-            var username = $('#username').val().toLowerCase();
-            var pass = $('#pass').val();
+        function login() {
+            var username = $('#username').val().trim().toLowerCase(),
+                pass = $('#pass').val();
 
             if (username.length < 1) sendToast('Ingresa un correo electrónico');
             else if (pass.length < 1) sendToast('Ingresa una contraseña');
             else {
-                // location.reload();
-                console.log();
-                send_data({
-                    data: $('#logeo').serialize(),
-                    dataType: 'json',
-                    method: 'logeo',
-                    url: "http://192.168.42.146/titanapp/inc/clients.php",
-                    // url: "http://192.168.0.64/devapp/inc/clients.php",
-                    callback: function (data) {
-                        if (data.codigo == '0') {
-                            console.log(data.detalle);
-                            ons.notification.alert(data.detalle);
-                        } else {
-                            sendToast(data.detalle);
-                        }
-                    }
-                })
+                var res = _validarLogin($('#logeo').serialize());
+                if (res.codigo == '0') {
+                    localStorage.email = username;
+                    localStorage.clave = pass;
+                    document.cookie = "sesion=valid; max-age=86400; path=/";
+                    location.reload();
+                } else {
+                    sendToast(res.detalle);
+                }
             }
-        }
-
-        function sendToast(msg) {
-            ons.notification.toast(msg, { timeout: 1500, animation: 'ascend' })
         }
     </script>
 </ons-page>
-<!-- </template> -->
