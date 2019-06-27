@@ -89,7 +89,7 @@ ons-splitter-mask {
   margin: 0 auto;
   font-size: 28px;
   font-family: NunitoSans-Black !important;
-  color: #ff9800;
+  color: #607D8B;
 }
 #side-nav .page__content {
   background: #fff !important;
@@ -342,6 +342,16 @@ ons-button {
   text-transform: capitalize !important;
   font-family: NunitoSans-SemiBold !important;
   margin-top: 5px !important;
+}
+
+#loader a {
+  font-family: NunitoSans-SemiBold;
+}
+#loader .alert-dialog-content--material {
+  margin: 10px 0;
+}
+#loader .alert-dialog-container--material {
+  padding: 0;
 }
 
 /*# sourceMappingURL=global.css.map */

@@ -25,9 +25,6 @@ class propietarios_model
 
                 if ($resultado->num_rows > 0) {
                     while ($row = $resultado->fetch_assoc()) {
-                        // print_r($row);
-                        // echo "->" . $row['clave'] . PHP_EOL;
-                        // echo "-->" . $clave;
                         if (password_verify($clave, $row['clave_prop'])) {
                             $mail = $row['correo_prop'];
                             $descrip = $row['descrip_prop'];

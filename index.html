@@ -50,8 +50,8 @@
                 data: dataSend,
                 dataType: 'json',
                 method: 'logeo',
-                url: "http://192.168.42.146/titanapp/inc/clients.php",
-                // url: "http://192.168.0.64/devapp/inc/clients.php",
+                // url: "http://192.168.42.146/titanapp/inc/clients.php",
+                url: "http://192.168.0.64/devapp/inc/clients.php",
                 callback: function (data) {
                     retornar = data;
                 }
@@ -72,6 +72,18 @@
 </head>
 
 <body>
+    <ons-alert-dialog id="loader">
+        <div class="alert-dialog-content" style="text-align: center;">
+            <ons-list-item>
+                <div class="left">
+                    <ons-progress-circular indeterminate></ons-progress-circular>
+                </div>
+                <div class="center">
+                    <a>Cargando...</a>
+                </div>
+            </ons-list-item>
+        </div>
+    </ons-alert-dialog>
 
     <ons-navigator swipe-target-width="80px" id="myNavigator"></ons-navigator>
 

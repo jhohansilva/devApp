@@ -91,7 +91,7 @@ ons-splitter-mask {
         margin: 0 auto;
         font-size: 28px;
         font-family: NunitoSans-Black !important;
-        color: #ff9800;
+        color: #607D8B;
       }
     }
   }
@@ -391,10 +391,24 @@ ons-button {
   min-height: auto !important;
   line-height: 0 !important;
   background: #ccc;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1)!important;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1) !important;
   color: #fff;
-  font-size: 18px!important;
-  text-transform: capitalize!important;
-  font-family: NunitoSans-SemiBold!important;
-  margin-top: 5px!important;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+  font-family: NunitoSans-SemiBold !important;
+  margin-top: 5px !important;
+}
+
+#loader {
+  a {
+    font-family: NunitoSans-SemiBold;
+  }
+
+  .alert-dialog-content--material {
+    margin: 10px 0;
+  }
+
+  .alert-dialog-container--material {
+    padding: 0;
+  }
 }

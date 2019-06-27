@@ -4,7 +4,7 @@
         <ons-list>
             <div class="img-content">
                 <div class="img-user">
-                    <a>JS</a>
+                    <a id="iniciales"></a>
                 </div>
             </div>
             <ons-list-item>
@@ -68,18 +68,43 @@
             console.log('->Side nav')
             var data = JSON.parse($.cookie("sesion"));
             console.log(data);
-            $('#span_user').html(data.descripcion);
-            $('#span_mail').html(data.correo);
+            $('#span_user').html(capitalize(data.descripcion));
+            $('#span_mail').html(data.correo.toLowerCase());
+            _generarImagen(data.descripcion);
         });
 
+        function _generarImagen(nombre) {
+            var nombreCliente = nombre.split(" ");
+            var primeraLetra = nombreCliente[0].split("");
+
+            if (nombreCliente.length == 3 || nombreCliente.length == 2) {
+                segundaLetra = nombreCliente[1].split("");
+            } else if (nombreCliente.length == 1) {
+                segundaLetra = nombreCliente[0].split("");
+            } else {
+                segundaLetra = nombreCliente[2].split("");
+            }
+
+            if (nombreCliente.length == 1) {
+                $('#iniciales').html(primeraLetra[0] + segundaLetra[segundaLetra.length - 1]);
+            } else {
+                $('#iniciales').html(primeraLetra[0] + segundaLetra[0]);
+            }
+        }
+
         ons.getScriptPage().onInit = function () {
-            // Set ons-splitter-side animation
             this.parentElement.setAttribute('animation', ons.platform.isAndroid() ? 'overlay' : 'reveal');
         };
 
         document.getElementById('btnCartera').addEventListener('click', function () {
             fn.pushPage({ 'id': 'paginas/procesos.cartera.html', 'title': 'Cartera' })
         });
+
+        function capitalize(str) {
+            var splitStr = str.toLowerCase().split(' ');
+            for (var i = 0; i < splitStr.length; i++) splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+            return splitStr.join(' ');
+        }
     </script>
 </ons-page>
 <!-- </template> -->

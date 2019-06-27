@@ -3,6 +3,10 @@
         _init: function (type, config) {
             // var http = config.url_ctrl ? ctrl(config.url_ctrl) : config.url;
             var http = config.url;
+            document.getElementById('loader').show();
+
+            
+            console.log('test')
             $.ajax({
                 method: type,
                 data: config.data,
@@ -12,7 +16,10 @@
                 beforeSend: function (request) {
                     if (config.method) request.setRequestHeader("Method", config.method);
                 }
-            }).done(config.callback);
+            }).done(function (data) {
+                config.callback(data);
+                document.getElementById('loader').hide();
+            });
         }
     }
 
