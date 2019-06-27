@@ -9,8 +9,8 @@
             </div>
             <ons-list-item>
                 <div class="center">
-                    <span class="list-item__title">Jhohan Silva</span>
-                    <span class="list-item__subtitle">jhohanf.silva@gmail.com</span>
+                    <span class="list-item__title" id="span_user"></span>
+                    <span class="list-item__subtitle" id="span_mail"></span>
                 </div>
             </ons-list-item>
         </ons-list>
@@ -64,6 +64,14 @@
     </ons-list>
 
     <script>
+        ons.ready(function () {
+            console.log('->Side nav')
+            var data = JSON.parse($.cookie("sesion"));
+            console.log(data);
+            $('#span_user').html(data.descripcion);
+            $('#span_mail').html(data.correo);
+        });
+
         ons.getScriptPage().onInit = function () {
             // Set ons-splitter-side animation
             this.parentElement.setAttribute('animation', ons.platform.isAndroid() ? 'overlay' : 'reveal');

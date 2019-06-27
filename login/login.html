@@ -57,8 +57,9 @@
                 if (res.codigo == '0') {
                     localStorage.email = username;
                     localStorage.clave = pass;
-                    document.cookie = "sesion=valid; max-age=86400; path=/";
-                    location.reload();
+                    // var data = JSON.parse(res.titulo.replace(/["']/g, '"'));
+                    document.cookie = "sesion=" + res.titulo.replace(/["']/g, '"') + "; max-age=86400; path=/";
+                    // location.reload();
                 } else {
                     sendToast(res.detalle);
                 }

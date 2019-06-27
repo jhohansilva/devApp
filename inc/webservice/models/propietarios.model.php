@@ -18,7 +18,7 @@ class propietarios_model
         if ($this->db['codigo'] == '0') {
             try {
                 $objDb = $this->db['obj'];
-                $stmt = $objDb->prepare("SELECT clave FROM propietarios WHERE correo= ?");
+                $stmt = $objDb->prepare("SELECT clave_prop,descrip_prop,correo_prop,nit_prop FROM propietarios WHERE correo_prop = ?");
                 $stmt->bind_param("s", $correo);
                 $stmt->execute();
                 $resultado = $stmt->get_result();
@@ -28,8 +28,13 @@ class propietarios_model
                         // print_r($row);
                         // echo "->" . $row['clave'] . PHP_EOL;
                         // echo "-->" . $clave;
-                        if (password_verify($clave, $row['clave'])) {
-                            $out = getArray('0', 'correcto', 'Ingresando');
+                        if (password_verify($clave, $row['clave_prop'])) {
+                            $mail = $row['correo_prop'];
+                            $descrip = $row['descrip_prop'];
+                            $nit = $row['nit_prop'];
+
+                            $data = "{'correo' : '$mail','descripcion': '$descrip','nit' : '$nit' }";
+                            $out = getArray('0', $data, 'Ingresando');
                         } else {
                             $out = getError("Contraseña incorrecta");
                         }
