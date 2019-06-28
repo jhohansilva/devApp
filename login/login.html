@@ -53,17 +53,20 @@
             if (username.length < 1) sendToast('Ingresa un correo electrónico');
             else if (pass.length < 1) sendToast('Ingresa una contraseña');
             else {
-                var res = _validarLogin($('#logeo').serialize());
-                console.log(res)
-                if (res.codigo == '0') {
-                    localStorage.email = username;
-                    localStorage.clave = pass;
-                    // var data = JSON.parse(res.titulo.replace(/["']/g, '"'));
-                    document.cookie = "sesion=" + res.titulo.replace(/["']/g, '"') + "; max-age=86400; path=/";
-                    location.reload();
-                } else {
-                    sendToast(res.detalle);
-                }
+                document.getElementById('loader').show();
+
+                setTimeout(function () {
+                    var res = _validarLogin($('#logeo').serialize());
+                    res = res[0];
+                    if (res.codigo == '0') {
+                        localStorage.email = username;
+                        localStorage.clave = pass;
+                        document.cookie = "sesion=" + res.titulo.replace(/["']/g, '"') + "; max-age=86400; path=/";
+                        location.reload();
+                    } else {
+                        sendToast(res.detalle);
+                    }
+                }, 200)
             }
         }
     </script>

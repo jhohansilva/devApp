@@ -23,6 +23,9 @@ if (verificarTrans($_SERVER)) {
                 case 'logeo':
                     $out = $client->call('logeo', $_POST);
                     break;
+                case 'consultarPropiedades':
+                    $out = $client->call('consultarPropiedades', $_POST);
+                    break;
                 default:
                     $out = getError('Método sin definir');
                     break;

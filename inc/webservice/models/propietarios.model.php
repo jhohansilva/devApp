@@ -17,8 +17,8 @@ class propietarios_model
     {
         if ($this->db['codigo'] == '0') {
             try {
-                $objDb = $this->db['obj'];
-                $stmt = $objDb->prepare("SELECT clave_prop,descrip_prop,correo_prop,nit_prop FROM propietarios WHERE correo_prop = ?");
+                $con = $this->db['obj'];
+                $stmt = $con->prepare("SELECT clave_prop,descrip_prop,correo_prop,nit_prop FROM propietarios WHERE correo_prop = ?");
                 $stmt->bind_param("s", $correo);
                 $stmt->execute();
                 $resultado = $stmt->get_result();
@@ -58,7 +58,7 @@ class propietarios_model
                 //     $out = getError('Ha ocurrido un error en la consulta');
                 // }
                 $stmt->close();
-                $objDb->close();
+                $con->close();
             } catch (Exception $e) {
                 $out = getError('Ha ocurrido un error en la consulta: ' . $e);
             }

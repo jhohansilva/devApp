@@ -7,12 +7,7 @@
         <ons-splitter-content page="paginas/components/tabbar.html"></ons-splitter-content>
     </ons-splitter>
     <script>
-        $('ons-page').scroll(function () {
-            console.log('Test')
-        })
         ons.ready(function () {
-            console.log('-> Main')
-
             ons.setDefaultDeviceBackButtonListener(function (event) {
                 ons.notification.confirm('Do you want to close the app?') // Ask for confirmation
                     .then(function (index) {

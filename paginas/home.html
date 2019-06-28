@@ -1,14 +1,12 @@
-<!-- <template id="home.html"> -->
 <ons-page id="home">
     <header>
         <div class="logo">
             <!-- <img src="../img/logo_blanco.png" /> -->
         </div>
-        <!-- <div class="title-header">Propiedades registradas</div> -->
         <div class="title-header">Propiedades registradas</div>
     </header>
     <main>
-        <ons-card>
+        <!-- <ons-card>
             <div class="header-card">
                 <div class="img left">
                     <img src="img/condominio.jpg" alt="Onsen UI" style="width: 100%">
@@ -31,7 +29,30 @@
                     </div>
                 </div>
             </div>
-        </ons-card>
+        </ons-card> -->
     </main>
+    <script id="template-propiedades"  type="text/x-handlebars-template">
+        {{#}}
+    </script>
+    <script>
+        ons.ready(function () {
+            var dataLocal = JSON.parse(getCookie("sesion"));
+            send_data({
+                data: { propietario: dataLocal.nit },
+                method: 'consultarPropiedades',
+                url: $_URL_SERVER,
+                callback: function (data) {
+                    data = data[0]
+                    console.log(data)
+                    if (data.codigo == '0') _llenarPropiedades(data.detalle);
+                    else if (data.codigo == '-3' || data.codigo == '-2') sendToast(data.detalle);
+                    else ons.notification.alert({ title: 'Error', message: data.detalle });
+                }
+            })
+        })
+
+        function _llenarPropiedades(data) {
+            console.log(data);
+        }
+    </script>
 </ons-page>
-<!-- </template> -->

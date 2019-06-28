@@ -14,13 +14,14 @@
     <link rel="stylesheet" href="css/global/global.css">
 
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript"
-        src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="js/onsen/onsenui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
 
     <script>
+        // $_URL_SERVER = "http://192.168.42.146/titanapp/inc/clients.php";
+        $_URL_SERVER = "http://192.168.0.64/devapp/inc/clients.php";
+
         $(document).ready(function () {
-            // validarSesion()
             if (getCookie('sesion')) {
                 document.querySelector('#myNavigator').pushPage('paginas/main.html');
             } else {
@@ -29,6 +30,7 @@
                         + '&clave=' + localStorage.clave;
 
                     var res = _validarLogin(datos);
+                    res = res[0]
                     if (res.codigo == '0') {
                         document.cookie = "sesion=valid; max-age=300; path=/";
                     } else {
@@ -50,8 +52,7 @@
                 data: dataSend,
                 dataType: 'json',
                 method: 'logeo',
-                // url: "http://192.168.42.146/titanapp/inc/clients.php",
-                url: "http://192.168.0.64/devapp/inc/clients.php",
+                url: $_URL_SERVER,
                 callback: function (data) {
                     retornar = data;
                 }
@@ -102,7 +103,7 @@
     <script type="text/javascript" src="js/ajax.js"></script>
     <script>
         ons.ready(function () {
-            console.log('-> Index');
+            // console.log('-> Index');
         });
 
         window.fn = {};

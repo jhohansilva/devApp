@@ -3,10 +3,8 @@
         _init: function (type, config) {
             // var http = config.url_ctrl ? ctrl(config.url_ctrl) : config.url;
             var http = config.url;
-            document.getElementById('loader').show();
 
-            
-            console.log('test')
+
             $.ajax({
                 method: type,
                 data: config.data,
@@ -19,6 +17,13 @@
             }).done(function (data) {
                 config.callback(data);
                 document.getElementById('loader').hide();
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.error(errorThrown);
+                document.getElementById('loader').hide();
+                ons.notification.alert({
+                    title: 'Error',
+                    message: errorThrown.toString().substring(0, 80)
+                });
             });
         }
     }

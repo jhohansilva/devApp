@@ -65,9 +65,7 @@
 
     <script>
         ons.ready(function () {
-            console.log('->Side nav')
-            var data = JSON.parse($.cookie("sesion"));
-            console.log(data);
+            var data = JSON.parse(getCookie("sesion"));
             $('#span_user').html(capitalize(data.descripcion));
             $('#span_mail').html(data.correo.toLowerCase());
             _generarImagen(data.descripcion);
