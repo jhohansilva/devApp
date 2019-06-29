@@ -5,7 +5,7 @@
         </div>
         <div class="title-header">Propiedades registradas</div>
     </header>
-    <main>
+    <main id="list-propiedades">
         <!-- <ons-card>
             <div class="header-card">
                 <div class="img left">
@@ -31,28 +31,34 @@
             </div>
         </ons-card> -->
     </main>
-    <script id="template-propiedades"  type="text/x-handlebars-template">
-        {{#}}
-    </script>
     <script>
         ons.ready(function () {
+            document.getElementById('loader').show();
+
             var dataLocal = JSON.parse(getCookie("sesion"));
-            send_data({
-                data: { propietario: dataLocal.nit },
-                method: 'consultarPropiedades',
-                url: $_URL_SERVER,
-                callback: function (data) {
-                    data = data[0]
-                    console.log(data)
-                    if (data.codigo == '0') _llenarPropiedades(data.detalle);
-                    else if (data.codigo == '-3' || data.codigo == '-2') sendToast(data.detalle);
-                    else ons.notification.alert({ title: 'Error', message: data.detalle });
-                }
-            })
+            setTimeout(function(){
+                send_data({
+                    data: { propietario: dataLocal.nit },
+                    method: 'consultarPropiedades',
+                    url: $_URL_SERVER,
+                    callback: function (data) {
+                        data = data[0]
+                        console.log(data)
+                        if (data.codigo == '0') _llenarPropiedades(data.detalle);
+                        else if (data.codigo == '-3' || data.codigo == '-2') sendToast(data.detalle);
+                        else ons.notification.alert({ title: 'Error', message: data.detalle });
+                    }
+                })
+            },500)
         })
 
         function _llenarPropiedades(data) {
             console.log(data);
+
+            var source = $('#template-propiedades').html();
+            var template = Handlebars.compile(source);
+            var html = template(data);
+            $('#list-propiedades').html(html);
         }
     </script>
 </ons-page>

@@ -39,6 +39,7 @@ if (verificarTrans($_SERVER)) {
         }
     }
 } else {
+    // print_r('Test');
     print_r(getJson('-1', 'error', 'Acceso denegado'));
     // print_r(getJson('0', 'error', $_SERVER['HTTP_ORIGIN']));
     // header('Location: http://google.com');
@@ -48,8 +49,8 @@ function verificarTrans($server)
 {
     if (@isset($_SERVER['HTTP_METHOD'])
         && @isset($_SERVER['HTTP_ORIGIN'])
-        // && $server['HTTP_ORIGIN'] == "file://") {
-        && $server['HTTP_ORIGIN'] == "http://127.0.0.1:5500") {
+        && $server['HTTP_ORIGIN'] == "file://") {
+        // && $server['HTTP_ORIGIN'] == "http://127.0.0.1:5500") {
         return true;
     } else {
         return false;

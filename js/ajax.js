@@ -15,8 +15,8 @@
                     if (config.method) request.setRequestHeader("Method", config.method);
                 }
             }).done(function (data) {
-                config.callback(data);
                 document.getElementById('loader').hide();
+                config.callback(data);
             }).fail(function (jqXHR, textStatus, errorThrown) {
                 console.error(errorThrown);
                 document.getElementById('loader').hide();
