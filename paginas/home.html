@@ -1,4 +1,8 @@
 <ons-page id="home">
+    <ons-pull-hook fixed-content="true" id="pull-hook">
+        <!-- Pull to refresh -->
+        <ons-progress-circular value="0" id="pullLoader"></ons-progress-circular>
+    </ons-pull-hook>
     <header>
         <div class="logo">
             <!-- <img src="../img/logo_blanco.png" /> -->
@@ -36,7 +40,7 @@
             document.getElementById('loader').show();
 
             var dataLocal = JSON.parse(getCookie("sesion"));
-            setTimeout(function(){
+            setTimeout(function () {
                 send_data({
                     data: { propietario: dataLocal.nit },
                     method: 'consultarPropiedades',
@@ -49,7 +53,39 @@
                         else ons.notification.alert({ title: 'Error', message: data.detalle });
                     }
                 })
-            },500)
+            }, 500)
+
+            // Pull hook
+            var pullHook = document.getElementById('pull-hook');
+            pullHook.addEventListener('changestate', function (event) {
+                var message = '';
+
+                switch (event.state) {
+                    case 'initial':
+                        message = 'Pull to refresh';
+                        break;
+                    case 'preaction':
+                        message = 'Release';
+                        break;
+                    case 'action':
+                        message = 'Loading...';
+                        break;
+                }
+
+                pullHook.innerHTML = message;
+            });
+
+            pullHook.onAction = function (done) {
+                console.log('--> Ready');
+                setTimeout(done, 1000);
+                console.log(done)
+            };
+
+            pullHook.onPull = function(data){
+                let level = parseFloat(data) * 100;
+                console.log('->' + level);
+                document.getElementById('pullLoader').setAttribute('value',level)
+            }
         })
 
         function _llenarPropiedades(data) {
