@@ -12,7 +12,7 @@
                 url: http,
                 async: false,
                 beforeSend: function (request) {
-                    if (config.method) request.setRequestHeader("Method", config.method);
+                    // if (config.method) request.setRequestHeader("Method", config.method);
                 }
             }).done(function (data) {
                 document.getElementById('loader').hide();
