@@ -58,6 +58,7 @@
                 setTimeout(function () {
                     var res = _validarLogin($('#logeo').serialize());
                     res = res[0];
+                    console.log(res)
                     if (res.codigo == '0') {
                         localStorage.email = username;
                         localStorage.clave = pass;
