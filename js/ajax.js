@@ -19,6 +19,8 @@
                 config.callback(data);
             }).fail(function (jqXHR, textStatus, errorThrown) {
                 console.error(errorThrown);
+                localStorage.removeItem('clave');
+                localStorage.removeItem('email');
                 document.getElementById('loader').hide();
                 ons.notification.alert({
                     title: 'Error',

@@ -50,7 +50,8 @@ function verificarTrans($server)
     if (@isset($_SERVER['HTTP_METHOD'])
         && @isset($_SERVER['HTTP_ORIGIN'])
         // && $server['HTTP_ORIGIN'] == "file://") {
-        && $server['HTTP_ORIGIN'] == "http://127.0.0.1:5500") {
+         && $server['HTTP_ORIGIN'] == "http://127.0.0.1:5500"
+        || $server['HTTP_ORIGIN'] == "file://") {
         return true;
     } else {
         return false;

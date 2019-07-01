@@ -1,45 +1,15 @@
 <ons-page id="home">
-    <ons-pull-hook fixed-content="true" id="pull-hook">
-        <!-- Pull to refresh -->
-        <ons-progress-circular value="0" id="pullLoader"></ons-progress-circular>
-    </ons-pull-hook>
     <header>
         <div class="logo">
             <!-- <img src="../img/logo_blanco.png" /> -->
         </div>
         <div class="title-header">Propiedades registradas</div>
     </header>
-    <main id="list-propiedades">
-        <!-- <ons-card>
-            <div class="header-card">
-                <div class="img left">
-                    <img src="img/condominio.jpg" alt="Onsen UI" style="width: 100%">
-                </div>
-                <div class="right">
-                    <div class="sub">
-                        <h3 class="titulo">Conjunto altos del sol</h3>
-                        <div class="sub-titulo">
-                            <ons-icon size="14px" icon="fa-building"></ons-icon>
-                            Conjunto
-                        </div>
-                        <div class="sub-titulo">
-                            <ons-icon size="14px" icon="fa-map-marker-alt"></ons-icon>
-                            Cra 22 # 23 - 48
-                        </div>
-                        <div class="sub-titulo">
-                            <ons-icon size="14px" icon="fa-globe-americas"></ons-icon>
-                            Villavicencio - Meta
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ons-card> -->
-    </main>
+    <main id="list-propiedades"></main>
     <script>
         ons.ready(function () {
-            document.getElementById('loader').show();
-
             var dataLocal = JSON.parse(getCookie("sesion"));
+            document.getElementById('loader').show();
             setTimeout(function () {
                 send_data({
                     data: { propietario: dataLocal.nit },
@@ -54,38 +24,6 @@
                     }
                 })
             }, 500)
-
-            // Pull hook
-            var pullHook = document.getElementById('pull-hook');
-            pullHook.addEventListener('changestate', function (event) {
-                var message = '';
-
-                switch (event.state) {
-                    case 'initial':
-                        message = 'Pull to refresh';
-                        break;
-                    case 'preaction':
-                        message = 'Release';
-                        break;
-                    case 'action':
-                        message = 'Loading...';
-                        break;
-                }
-
-                pullHook.innerHTML = message;
-            });
-
-            pullHook.onAction = function (done) {
-                console.log('--> Ready');
-                setTimeout(done, 1000);
-                console.log(done)
-            };
-
-            pullHook.onPull = function(data){
-                let level = parseFloat(data) * 100;
-                console.log('->' + level);
-                document.getElementById('pullLoader').setAttribute('value',level)
-            }
         })
 
         function _llenarPropiedades(data) {

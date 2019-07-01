@@ -1,0 +1,11 @@
+<ons-page id="clasificados">
+    <div class="title-header">Propiedades registradas</div>
+    <ons-fab id="btn-CrearClasificado" position="bottom right" style="line-height: 65px;">
+        <ons-icon icon="fa-plus" size="18px"></ons-icon>
+    </ons-fab>
+    <script>
+        document.getElementById('btn-CrearClasificado').addEventListener('click', function () {
+            fn.pushPage({ 'id': 'paginas/clasificados.crear.html', 'title': 'Clasificados' })
+        });
+    </script>
+</ons-page>

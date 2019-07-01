@@ -33,7 +33,7 @@
                     console.debug(res)
                     res = res[0]
                     if (res.codigo == '0') {
-                        document.cookie = "sesion=valid; max-age=300; path=/";
+                        document.cookie = "sesion=" + res.titulo.replace(/["']/g, '"') + "; max-age=86400; path=/";
                     } else {
                         localStorage.removeItem('clave');
                         localStorage.removeItem('email');
