@@ -20,7 +20,12 @@
                 </div>
             </div>
             <div class="content">
-
+                <p>
+                    <label>Conjunto:</label>
+                    <select id="conjuntos">
+                        <option value="0" selected disabled>Seleccione</option>
+                    </select>
+                </p>
                 <ons-button id="btnVerFactura" modifier="large" style="padding: 24px 0!important;">
                     <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
                     Consultar
@@ -30,6 +35,28 @@
     </main>
     <script>
         ons.getScriptPage().onInit = function () {
+            console.log('Crear clasificado')
+            var conjuntosSelect = $('#conjuntos'),
+                conjuntosActual = [];
+            $_PROPIEDADES.forEach(element => {
+                conjuntosActual = [];
+                let opciones = $('#conjuntos option')
+                for (var i = 0; i < opciones.length; i++)
+                    conjuntosActual.push($(opciones[i]).val())
+
+                let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
+
+                if (busqueda == null) {
+                    let obj = $('<option />',
+                        {
+                            html: element.descripConjunto,
+                            value: element.nitConjunto
+                        }
+                    ).appendTo(conjuntosSelect);
+
+                    // conjuntosSelect.append(obj);
+                }
+            });
             // this.querySelector('ons-toolbar div.center').textContent = this.data.title;
         };
     </script>

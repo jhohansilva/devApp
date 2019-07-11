@@ -28,7 +28,7 @@
 
         function _llenarPropiedades(data) {
             console.log(data);
-
+            $_PROPIEDADES = data;
             var source = $('#template-propiedades').html();
             var template = Handlebars.compile(source);
             var html = template(data);
