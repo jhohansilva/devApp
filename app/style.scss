@@ -91,7 +91,7 @@ ons-splitter-mask {
         margin: 0 auto;
         font-size: 28px;
         font-family: NunitoSans-Black !important;
-        color: #607D8B;
+        color: #607d8b;
       }
     }
   }
@@ -369,7 +369,7 @@ select {
   border-bottom: 1px solid #afafaf !important;
   border: none;
   color: #333 !important;
-  font-size: 18px;
+  font-size: 16px;
   font-family: NunitoSans-SemiBold;
   margin-bottom: 10px;
   -webkit-appearance: none;
@@ -410,5 +410,44 @@ ons-button {
 
   .alert-dialog-container--material {
     padding: 0;
+  }
+}
+
+main {
+  input {
+    font-size: 16px !important;
+  }
+}
+
+textarea {
+  width: 100% !important;
+  margin-top: 5px !important;
+  border-radius: 2px !important;
+  border: 0 !important;
+  font-size: 16px !important;
+}
+
+
+// Script File
+.thumbnail {
+  height: 100px;
+  margin: 10px;
+  float: left;
+}
+#clear {
+  display: none;
+}
+#result {
+  border: 4px dotted #cccccc;
+  display: none;
+  float: right;
+  margin: 0 auto;
+  width: 511px;
+}
+
+#carouselImages{
+  ons-carousel-item{
+    width: 33%!important;
+    height: 100px;
   }
 }

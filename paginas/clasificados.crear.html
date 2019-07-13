@@ -26,38 +26,158 @@
                         <option value="0" selected disabled>Seleccione</option>
                     </select>
                 </p>
+                <p>
+                    <label>Tipo:</label>
+                    <select id="tipoClasificado">
+                        <option value="0" selected disabled>Seleccione</option>
+                        <option value="1">Comprar</option>
+                        <option value="2">Vender</option>
+                        <option value="3">Alquilar</option>
+                        <option value="4">Ofertar servicios</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Categoria:</label>
+                    <select id="categoriaClasificado">
+                        <option value="0" selected disabled>Seleccione</option>
+                        <option value="1">Casa</option>
+                        <option value="2">Apartamento</option>
+                        <option value="3">Lote</option>
+                        <option value="4">Parqueadero</option>
+                        <option value="5">Vehículo</option>
+                        <option value="6">Servicios</option>
+                        <option value="7">Otros</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Titulo:</label>
+                    <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar"></ons-input>
+                </p>
+                <p>
+                    <ons-row>
+                        <ons-col width="80px" vertical-align="center">
+                            <label>Valor:</label>
+                        </ons-col>
+                        <ons-col>
+                            <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar">
+                            </ons-input>
+                        </ons-col>
+                    </ons-row>
+                </p>
+                <p>
+                    <ons-row>
+                        <ons-col width="80px" vertical-align="center">
+                            <label>Telefono:</label>
+                        </ons-col>
+                        <ons-col>
+                            <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar">
+                            </ons-input>
+                        </ons-col>
+                    </ons-row>
+                </p>
+                <p>
+                    <label>Descripción:</label>
+                    <textarea class="textarea" rows="6"></textarea>
+                </p>
+                <p>
+                    <label for="files">Select multiple files: </label>
+                    <input id="files" type="file" />
+                    <button type="button" id="clear">Clear</button>
+                    <!-- <div id="result"></div> -->
+                    <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
+                    </ons-carousel>
+                </p>
                 <ons-button id="btnVerFactura" modifier="large" style="padding: 24px 0!important;">
                     <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
                     Consultar
                 </ons-button>
+                <button data-role="none" onclick="getMultiplePhoto();" class="nightly-button"><i
+                        class="fa fa-picture-o"></i>Select Images</button>
             </div>
         </ons-card>
     </main>
     <script>
-        ons.getScriptPage().onInit = function () {
-            console.log('Crear clasificado')
-            var conjuntosSelect = $('#conjuntos'),
-                conjuntosActual = [];
-            $_PROPIEDADES.forEach(element => {
-                conjuntosActual = [];
-                let opciones = $('#conjuntos option')
-                for (var i = 0; i < opciones.length; i++)
-                    conjuntosActual.push($(opciones[i]).val())
+        // ons.getScriptPage().onInit = function () {
+        //     console.log('Crear clasificado')
+        //     var conjuntosSelect = $('#conjuntos'),
+        //         conjuntosActual = [];
+        //     $_PROPIEDADES.forEach(element => {
+        //         conjuntosActual = [];
+        //         let opciones = $('#conjuntos option')
+        //         for (var i = 0; i < opciones.length; i++)
+        //             conjuntosActual.push($(opciones[i]).val())
 
-                let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
+        //         let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
 
-                if (busqueda == null) {
-                    let obj = $('<option />',
-                        {
-                            html: element.descripConjunto,
-                            value: element.nitConjunto
-                        }
-                    ).appendTo(conjuntosSelect);
-
-                    // conjuntosSelect.append(obj);
+        //         if (busqueda == null) {
+        //             let obj = $('<option />',
+        //                 {
+        //                     html: element.descripConjunto,
+        //                     value: element.nitConjunto
+        //                 }
+        //             ).appendTo(conjuntosSelect);
+        //         }
+        //     });
+        // };
+        function getMultiplePhoto() {
+            console.log(window.imagePicker)
+            window.imagePicker.getPictures(
+                function (results) {
+                    console.log(results)
                 }
-            });
-            // this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-        };
+            );
+        }
+
+
+        // Script Files
+        // ons.getScriptPage().onInit = function () {
+        //     if (window.File && window.FileList && window.FileReader) {
+        //         $('#files').on("change", function (event) {
+        //             var files = event.target.files;
+        //             var output = $("#carouselImages");
+        //             for (var i = 0; i < files.length; i++) {
+        //                 var file = files[i];
+        //                 if (file.type.match('image.*')) {
+        //                     if (this.files[0].size < 2097152) {
+        //                         var picReader = new FileReader();
+        //                         picReader.addEventListener("load", function (event) {
+        //                             var picFile = event.target;
+        //                             $('<ons-carousel-item />').html(`
+        //                                 <div>
+        //                                     <img class="thumbnail" src="${picFile.result}" />
+        //                                 </div>
+        //                             `).appendTo(output);
+
+        //                         });
+        //                         $('#clear').show();
+        //                         picReader.readAsDataURL(file);
+        //                     } else {
+        //                         alert("Image Size is too big. Minimum size is 2MB.");
+        //                         $(this).val("");
+        //                     }
+        //                 } else {
+        //                     alert("You can only upload image file.");
+        //                     $(this).val("");
+        //                 }
+        //             }
+        //         });
+        //     }
+        //     else {
+        //         console.log("Your browser does not support File API");
+        //     }
+        // }
+
+        // $('#files').on("click", function () {
+        //     $('.thumbnail').closest('ons-carousel-item').remove();
+        //     $(this).val("");
+        // });
+
+        // $('#clear').on("click", function () {
+        //     $('.thumbnail').closest('ons-carousel-item').remove();
+        //     $('#files').val("");
+        //     $(this).hide();
+        // });
+
+        // !Script Files
     </script>
 </ons-page>

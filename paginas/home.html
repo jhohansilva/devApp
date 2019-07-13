@@ -9,21 +9,21 @@
     <script>
         ons.ready(function () {
             var dataLocal = JSON.parse(getCookie("sesion"));
-            document.getElementById('loader').show();
-            setTimeout(function () {
-                send_data({
-                    data: { propietario: dataLocal.nit },
-                    method: 'consultarPropiedades',
-                    url: $_URL_SERVER,
-                    callback: function (data) {
-                        data = data[0]
-                        console.log(data)
-                        if (data.codigo == '0') _llenarPropiedades(data.detalle);
-                        else if (data.codigo == '-3' || data.codigo == '-2') sendToast(data.detalle);
-                        else ons.notification.alert({ title: 'Error', message: data.detalle });
-                    }
-                })
-            }, 500)
+            // document.getElementById('loader').show();
+            // setTimeout(function () {
+            //     send_data({
+            //         data: { propietario: dataLocal.nit },
+            //         method: 'consultarPropiedades',
+            //         url: $_URL_SERVER,
+            //         callback: function (data) {
+            //             data = data[0]
+            //             console.log(data)
+            //             if (data.codigo == '0') _llenarPropiedades(data.detalle);
+            //             else if (data.codigo == '-3' || data.codigo == '-2') sendToast(data.detalle);
+            //             else ons.notification.alert({ title: 'Error', message: data.detalle });
+            //         }
+            //     })
+            // }, 500)
         })
 
         function _llenarPropiedades(data) {
