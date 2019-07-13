@@ -80,104 +80,67 @@
                     <textarea class="textarea" rows="6"></textarea>
                 </p>
                 <p>
-                    <label for="files">Select multiple files: </label>
-                    <input id="files" type="file" />
-                    <button type="button" id="clear">Clear</button>
-                    <!-- <div id="result"></div> -->
+                    <!-- <input id="files" type="file" /> -->
                     <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
+                        <ons-carousel-item>
+                            <input id="files" type="file" class="input-file" />
+                            <label for="files">
+                            </label>
+                        </ons-carousel-item>
                     </ons-carousel>
                 </p>
                 <ons-button id="btnVerFactura" modifier="large" style="padding: 24px 0!important;">
                     <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
                     Consultar
                 </ons-button>
-                <button data-role="none" onclick="getMultiplePhoto();" class="nightly-button"><i
-                        class="fa fa-picture-o"></i>Select Images</button>
             </div>
         </ons-card>
     </main>
     <script>
-        // ons.getScriptPage().onInit = function () {
-        //     console.log('Crear clasificado')
-        //     var conjuntosSelect = $('#conjuntos'),
-        //         conjuntosActual = [];
-        //     $_PROPIEDADES.forEach(element => {
-        //         conjuntosActual = [];
-        //         let opciones = $('#conjuntos option')
-        //         for (var i = 0; i < opciones.length; i++)
-        //             conjuntosActual.push($(opciones[i]).val())
+        ons.getScriptPage().onInit = function () {
+            //     console.log('Crear clasificado')
+            //     var conjuntosSelect = $('#conjuntos'),
+            //         conjuntosActual = [];
+            //     $_PROPIEDADES.forEach(element => {
+            //         conjuntosActual = [];
+            //         let opciones = $('#conjuntos option')
+            //         for (var i = 0; i < opciones.length; i++)
+            //             conjuntosActual.push($(opciones[i]).val())
 
-        //         let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
+            //         let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
 
-        //         if (busqueda == null) {
-        //             let obj = $('<option />',
-        //                 {
-        //                     html: element.descripConjunto,
-        //                     value: element.nitConjunto
-        //                 }
-        //             ).appendTo(conjuntosSelect);
-        //         }
-        //     });
-        // };
-        function getMultiplePhoto() {
-            console.log(window.imagePicker)
-            window.imagePicker.getPictures(
-                function (results) {
-                    console.log(results)
-                }
-            );
+            //         if (busqueda == null) {
+            //             let obj = $('<option />',
+            //                 {
+            //                     html: element.descripConjunto,
+            //                     value: element.nitConjunto
+            //                 }
+            //             ).appendTo(conjuntosSelect);
+            //         }
+            //     });
+        };
+
+        ons.getScriptPage().onInit = function () {
+            if (window.File && window.FileList && window.FileReader) {
+                $(document).on('change', '.input-file', function (e) {
+                    var file = e.target.files[0],
+                        el = e.target;
+                    var picReader = new FileReader();
+                    console.log(files)
+                    if (!file.type.match('image.*')) {
+                        sendToast('Solo puedes seleccionar imagenes');
+                        $(el).val('');
+                    } else if (file.size > 2097152) {
+                        sendToast('La imagen es superior a 2MB');
+                        $(el).val('');
+                    } else {
+                        console.log(picReader)
+                        picReader.onload = function (event) {
+                            console.log(event)
+                        };
+                    }
+                })
+            }
         }
-
-
-        // Script Files
-        // ons.getScriptPage().onInit = function () {
-        //     if (window.File && window.FileList && window.FileReader) {
-        //         $('#files').on("change", function (event) {
-        //             var files = event.target.files;
-        //             var output = $("#carouselImages");
-        //             for (var i = 0; i < files.length; i++) {
-        //                 var file = files[i];
-        //                 if (file.type.match('image.*')) {
-        //                     if (this.files[0].size < 2097152) {
-        //                         var picReader = new FileReader();
-        //                         picReader.addEventListener("load", function (event) {
-        //                             var picFile = event.target;
-        //                             $('<ons-carousel-item />').html(`
-        //                                 <div>
-        //                                     <img class="thumbnail" src="${picFile.result}" />
-        //                                 </div>
-        //                             `).appendTo(output);
-
-        //                         });
-        //                         $('#clear').show();
-        //                         picReader.readAsDataURL(file);
-        //                     } else {
-        //                         alert("Image Size is too big. Minimum size is 2MB.");
-        //                         $(this).val("");
-        //                     }
-        //                 } else {
-        //                     alert("You can only upload image file.");
-        //                     $(this).val("");
-        //                 }
-        //             }
-        //         });
-        //     }
-        //     else {
-        //         console.log("Your browser does not support File API");
-        //     }
-        // }
-
-        // $('#files').on("click", function () {
-        //     $('.thumbnail').closest('ons-carousel-item').remove();
-        //     $(this).val("");
-        // });
-
-        // $('#clear').on("click", function () {
-        //     $('.thumbnail').closest('ons-carousel-item').remove();
-        //     $('#files').val("");
-        //     $(this).hide();
-        // });
-
-        // !Script Files
     </script>
 </ons-page>

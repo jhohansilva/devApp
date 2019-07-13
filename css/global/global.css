@@ -366,27 +366,25 @@ textarea {
   font-size: 16px !important;
 }
 
-.thumbnail {
-  height: 100px;
-  margin: 10px;
-  float: left;
-}
-
-#clear {
-  display: none;
-}
-
-#result {
-  border: 4px dotted #cccccc;
-  display: none;
-  float: right;
-  margin: 0 auto;
-  width: 511px;
-}
-
 #carouselImages ons-carousel-item {
   width: 33% !important;
   height: 100px;
+  padding: 0 5px;
+}
+#carouselImages ons-carousel-item input[type=file] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+#carouselImages ons-carousel-item label {
+  width: 100%;
+  height: 100%;
+  background-color: #edf9ff;
+  display: inline-block;
+  border-radius: 2px;
 }
 
 /*# sourceMappingURL=global.css.map */
