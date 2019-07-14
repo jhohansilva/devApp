@@ -364,12 +364,14 @@ textarea {
   border-radius: 2px !important;
   border: 0 !important;
   font-size: 16px !important;
+  background: #fafafa !important;
+  border: 1px solid #afafaf !important;
 }
 
 #carouselImages ons-carousel-item {
   width: 33% !important;
   height: 100px;
-  padding: 0 5px;
+  padding: 10px 5px 0 5px;
 }
 #carouselImages ons-carousel-item input[type=file] {
   width: 0.1px;
@@ -385,6 +387,25 @@ textarea {
   background-color: #edf9ff;
   display: inline-block;
   border-radius: 2px;
+  text-align: center;
+}
+#carouselImages ons-carousel-item label::before {
+  content: "+";
+  left: 0;
+  right: 0;
+  position: absolute;
+  font-size: 36px;
+  color: #7892a9;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#carouselImages ons-carousel-item label img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  z-index: 9999999;
+  position: relative;
 }
 
 /*# sourceMappingURL=global.css.map */

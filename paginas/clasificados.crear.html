@@ -59,7 +59,8 @@
                             <label>Valor:</label>
                         </ons-col>
                         <ons-col>
-                            <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar">
+                            <ons-input id="valor" autocomplete="off" autocorrect="off" autocapitalize="on"
+                                modifier="underbar">
                             </ons-input>
                         </ons-col>
                     </ons-row>
@@ -70,22 +71,22 @@
                             <label>Telefono:</label>
                         </ons-col>
                         <ons-col>
-                            <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar">
+                            <ons-input id="telefono" autocomplete="off" autocorrect="off" autocapitalize="on"
+                                modifier="underbar">
                             </ons-input>
                         </ons-col>
                     </ons-row>
                 </p>
-                <p>
+                <p style="padding-top: 15px;">
                     <label>Descripción:</label>
                     <textarea class="textarea" rows="6"></textarea>
                 </p>
                 <p>
-                    <!-- <input id="files" type="file" /> -->
+                    <label>Imagenes: <a id="countImages">0 Seleccionadas</a></label>
                     <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
                         <ons-carousel-item>
-                            <input id="files" type="file" class="input-file" />
-                            <label for="files">
-                            </label>
+                            <input id="files-0" type="file" class="input-file" />
+                            <label for="files-0"></label>
                         </ons-carousel-item>
                     </ons-carousel>
                 </p>
@@ -97,50 +98,128 @@
         </ons-card>
     </main>
     <script>
+        var valorMask = new IMask(document.getElementById('valor'),
+            {
+                mask: Number, min: 0, max: 999999999, scale: 0, thousandsSeparator: ','
+            });
+
+        var phoneMask = new IMask(document.getElementById('telefono'),
+            {
+                mask: '000 000 0000'
+            });
+
         ons.getScriptPage().onInit = function () {
-            //     console.log('Crear clasificado')
-            //     var conjuntosSelect = $('#conjuntos'),
-            //         conjuntosActual = [];
-            //     $_PROPIEDADES.forEach(element => {
-            //         conjuntosActual = [];
-            //         let opciones = $('#conjuntos option')
-            //         for (var i = 0; i < opciones.length; i++)
-            //             conjuntosActual.push($(opciones[i]).val())
+            // var conjuntosSelect = $('#conjuntos'),
+            //     conjuntosActual = [];
+            // $_PROPIEDADES.forEach(element => {
+            //     conjuntosActual = [];
+            //     let opciones = $('#conjuntos option')
+            //     for (var i = 0; i < opciones.length; i++)
+            //         conjuntosActual.push($(opciones[i]).val())
 
-            //         let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
+            //     let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
 
-            //         if (busqueda == null) {
-            //             let obj = $('<option />',
-            //                 {
-            //                     html: element.descripConjunto,
-            //                     value: element.nitConjunto
-            //                 }
-            //             ).appendTo(conjuntosSelect);
-            //         }
-            //     });
+            //     if (busqueda == null) {
+            //         let obj = $('<option />',
+            //             {
+            //                 html: element.descripConjunto,
+            //                 value: element.nitConjunto
+            //             }
+            //         ).appendTo(conjuntosSelect);
+            //     }
+            // });
         };
 
         ons.getScriptPage().onInit = function () {
             if (window.File && window.FileList && window.FileReader) {
-                $(document).on('change', '.input-file', function (e) {
-                    var file = e.target.files[0],
-                        el = e.target;
-                    var picReader = new FileReader();
-                    console.log(files)
-                    if (!file.type.match('image.*')) {
-                        sendToast('Solo puedes seleccionar imagenes');
-                        $(el).val('');
-                    } else if (file.size > 2097152) {
-                        sendToast('La imagen es superior a 2MB');
-                        $(el).val('');
+                $(document).on("change", ".input-file", function (event) {
+                    var files = event.target.files,
+                        file = files[0],
+                        el = this,
+                        labelEl = $(el).next('label');
+                    if (files.length > 0) {
+                        if (file.type.match('image.*')) {
+                            if (file.size < 2097152) {
+                                var picReader = new FileReader();
+                                picReader.addEventListener("load", function (event) {
+                                    var picFile = event.target;
+                                    if ($(labelEl).find('img').length < 1) {
+                                        $('<img />', {
+                                            src: picFile.result
+                                        }).appendTo(labelEl);
+                                        _addInputFIle();
+                                    } else {
+                                        var img = $(labelEl).find('img')
+                                        $(img).attr('src', picFile.result)
+                                    }
+                                });
+                                picReader.readAsDataURL(file);
+                            } else {
+                                sendToast('La imagen no puede superar 2MB')
+                                if ($(labelEl).find('img').length > 0) {
+                                    $(el).closest('ons-carousel-item').remove()
+                                    _reorganizar();
+                                } else {
+                                    $(el).val('')
+                                }
+                            }
+                        } else {
+                            sendToast('Solo puedes adjuntar imagenes')
+                            if ($(labelEl).find('img').length > 0) {
+                                $(el).closest('ons-carousel-item').remove()
+                                _reorganizar();
+                            } else {
+                                $(el).val('')
+                            }
+                        }
                     } else {
-                        console.log(picReader)
-                        picReader.onload = function (event) {
-                            console.log(event)
-                        };
+                        if ($('#carouselImages ons-carousel-item').length != 1) {
+                            $(el).closest('ons-carousel-item').remove()
+                            _reorganizar();
+                        }
                     }
-                })
+                });
             }
+        }
+
+        _setLabel = function () {
+            var items = $('#carouselImages ons-carousel-item img').length;
+            $('#countImages').html(`<b>${items}</b> Seleccionadas`)
+        }
+
+        _reorganizar = function () {
+            var items = $('#carouselImages ons-carousel-item');
+            for (var i = 0; i < items.length; i++) {
+                var input = $(items[i]).find('input'),
+                    label = $(items[i]).find('label');
+                $(input).attr('id', `files-${i}`)
+                $(label).attr('for', `files-${i}`)
+            }
+
+            if ($('#carouselImages ons-carousel-item img').length == 2) _addInputFIle();
+            _setLabel();
+        }
+
+        _addInputFIle = function () {
+            var items = $('#carouselImages ons-carousel-item');
+            if (items.length < 3) {
+                let inputObj = $('<input />', {
+                    id: `files-${items.length}`,
+                    type: 'file',
+                    class: 'input-file'
+                });
+
+                let labelObj = $('<label />', {
+                    for: `files-${items.length}`
+                });
+
+                $('<ons-carousel-item />')
+                    .append(inputObj)
+                    .append(labelObj)
+                    .appendTo('#carouselImages');
+            }
+
+            _setLabel();
         }
     </script>
 </ons-page>
