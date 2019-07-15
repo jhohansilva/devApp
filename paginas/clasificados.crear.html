@@ -20,80 +20,83 @@
                 </div>
             </div>
             <div class="content">
-                <p>
-                    <label>Conjunto:</label>
-                    <select id="conjuntos">
-                        <option value="0" selected disabled>Seleccione</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Tipo:</label>
-                    <select id="tipoClasificado">
-                        <option value="0" selected disabled>Seleccione</option>
-                        <option value="1">Comprar</option>
-                        <option value="2">Vender</option>
-                        <option value="3">Alquilar</option>
-                        <option value="4">Ofertar servicios</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Categoria:</label>
-                    <select id="categoriaClasificado">
-                        <option value="0" selected disabled>Seleccione</option>
-                        <option value="1">Casa</option>
-                        <option value="2">Apartamento</option>
-                        <option value="3">Lote</option>
-                        <option value="4">Parqueadero</option>
-                        <option value="5">Vehículo</option>
-                        <option value="6">Servicios</option>
-                        <option value="7">Otros</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Titulo:</label>
-                    <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar"></ons-input>
-                </p>
-                <p>
-                    <ons-row>
-                        <ons-col width="80px" vertical-align="center">
-                            <label>Valor:</label>
-                        </ons-col>
-                        <ons-col>
-                            <ons-input id="valor" autocomplete="off" autocorrect="off" autocapitalize="on"
-                                modifier="underbar">
-                            </ons-input>
-                        </ons-col>
-                    </ons-row>
-                </p>
-                <p>
-                    <ons-row>
-                        <ons-col width="80px" vertical-align="center">
-                            <label>Telefono:</label>
-                        </ons-col>
-                        <ons-col>
-                            <ons-input id="telefono" autocomplete="off" autocorrect="off" autocapitalize="on"
-                                modifier="underbar">
-                            </ons-input>
-                        </ons-col>
-                    </ons-row>
-                </p>
-                <p style="padding-top: 15px;">
-                    <label>Descripción:</label>
-                    <textarea class="textarea" rows="6"></textarea>
-                </p>
-                <p>
-                    <label>Imagenes: <a id="countImages">0 Seleccionadas</a></label>
-                    <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
-                        <ons-carousel-item>
-                            <input id="files-0" type="file" class="input-file" />
-                            <label for="files-0"></label>
-                        </ons-carousel-item>
-                    </ons-carousel>
-                </p>
-                <ons-button id="btnVerFactura" modifier="large" style="padding: 24px 0!important;">
-                    <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
-                    Consultar
-                </ons-button>
+                <form id="formCrearClasificado">
+                    <p>
+                        <label>Conjunto:</label>
+                        <select id="conjuntos">
+                            <option value="0" selected disabled>Seleccione</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Tipo:</label>
+                        <select id="tipoClasificado">
+                            <option value="0" selected disabled>Seleccione</option>
+                            <option value="1">Comprar</option>
+                            <option value="2">Vender</option>
+                            <option value="3">Alquilar</option>
+                            <option value="4">Ofertar servicios</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Categoria:</label>
+                        <select id="categoriaClasificado">
+                            <option value="0" selected disabled>Seleccione</option>
+                            <option value="1">Casa</option>
+                            <option value="2">Apartamento</option>
+                            <option value="3">Lote</option>
+                            <option value="4">Parqueadero</option>
+                            <option value="5">Vehículo</option>
+                            <option value="6">Servicios</option>
+                            <option value="7">Otros</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Titulo:</label>
+                        <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar">
+                        </ons-input>
+                    </p>
+                    <p>
+                        <ons-row>
+                            <ons-col width="80px" vertical-align="center">
+                                <label>Valor:</label>
+                            </ons-col>
+                            <ons-col>
+                                <ons-input id="valor" autocomplete="off" autocorrect="off" autocapitalize="on"
+                                    modifier="underbar">
+                                </ons-input>
+                            </ons-col>
+                        </ons-row>
+                    </p>
+                    <p>
+                        <ons-row>
+                            <ons-col width="80px" vertical-align="center">
+                                <label>Telefono:</label>
+                            </ons-col>
+                            <ons-col>
+                                <ons-input id="telefono" autocomplete="off" autocorrect="off" autocapitalize="on"
+                                    modifier="underbar">
+                                </ons-input>
+                            </ons-col>
+                        </ons-row>
+                    </p>
+                    <p style="padding-top: 15px;">
+                        <label>Descripción:</label>
+                        <textarea class="textarea" rows="6"></textarea>
+                    </p>
+                    <p>
+                        <label>Imagenes: <a id="countImages">0 Seleccionadas</a></label>
+                        <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
+                            <ons-carousel-item>
+                                <input id="files-0" type="file" class="input-file" />
+                                <label for="files-0"></label>
+                            </ons-carousel-item>
+                        </ons-carousel>
+                    </p>
+                    <ons-button id="btnCrearClasificado" modifier="large" style="padding: 24px 0!important;">
+                        <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
+                        Consultar
+                    </ons-button>
+                </form>
             </div>
         </ons-card>
     </main>
@@ -108,29 +111,54 @@
                 mask: '000 000 0000'
             });
 
+        _cargarConjutosSelect = function () {
+            var conjuntosSelect = $('#conjuntos'),
+                conjuntosActual = [];
+            $_PROPIEDADES.forEach(element => {
+                conjuntosActual = [];
+                let opciones = $('#conjuntos option')
+                for (var i = 0; i < opciones.length; i++)
+                    conjuntosActual.push($(opciones[i]).val())
+
+                let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
+
+                if (busqueda == null) {
+                    let obj = $('<option />',
+                        {
+                            html: element.descripConjunto,
+                            value: element.nitConjunto
+                        }
+                    ).appendTo(conjuntosSelect);
+                }
+            });
+        }
+
+        _guardarFactura = function () {
+            var inputs = $('#carouselImages ons-carousel-item input'),
+                objData = new FormData();
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].files.length > 0) objData.append(i, inputs[i].files[0])
+            }
+
+            objData.append('titulo','ABC')
+            objData.append('imagenes','')
+            $.ajax({
+                url: 'http://192.168.42.146/titanapp/inc/clients.php',
+                type: 'post',
+                data: objData,
+                contentType: false,
+                processData: false,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Method", 'crearClasificado');
+                }
+            }).done(function (data) {
+                console.log(data)
+            });
+        }
+
         ons.getScriptPage().onInit = function () {
-            // var conjuntosSelect = $('#conjuntos'),
-            //     conjuntosActual = [];
-            // $_PROPIEDADES.forEach(element => {
-            //     conjuntosActual = [];
-            //     let opciones = $('#conjuntos option')
-            //     for (var i = 0; i < opciones.length; i++)
-            //         conjuntosActual.push($(opciones[i]).val())
+            $('#btnCrearClasificado').click(_guardarFactura)
 
-            //     let busqueda = conjuntosActual.find(nit => nit == element.nitConjunto)
-
-            //     if (busqueda == null) {
-            //         let obj = $('<option />',
-            //             {
-            //                 html: element.descripConjunto,
-            //                 value: element.nitConjunto
-            //             }
-            //         ).appendTo(conjuntosSelect);
-            //     }
-            // });
-        };
-
-        ons.getScriptPage().onInit = function () {
             if (window.File && window.FileList && window.FileReader) {
                 $(document).on("change", ".input-file", function (event) {
                     var files = event.target.files,

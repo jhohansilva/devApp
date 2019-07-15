@@ -26,6 +26,17 @@ if (verificarTrans($_SERVER)) {
                 case 'consultarPropiedades':
                     $out = $client->call('consultarPropiedades', $_POST);
                     break;
+                case 'crearClasificado':
+                    $res = _imagenesClasificados($_FILES);
+                    // print_r($res);
+                    if ($res[0]['codigo'] == '0') {
+                        $_POST['imagenes'] = $res[0]['detalle'];
+                        print_r($_POST);
+                        $out = $client->call('crearClasificado', $_POST);
+                    } else {
+                        $out = $res;
+                    }
+                    break;
                 default:
                     $out = getError('Método sin definir');
                     break;
@@ -39,18 +50,43 @@ if (verificarTrans($_SERVER)) {
         }
     }
 } else {
-    // print_r('Test');
     print_r(getJson('-1', 'error', 'Acceso denegado'));
-    // print_r(getJson('0', 'error', $_SERVER['HTTP_ORIGIN']));
+    // print_r(getJson('-1', 'error', $_SERVER['HTTP_ORIGIN']));
     // header('Location: http://google.com');
+}
+
+function _imagenesClasificados($images)
+{
+    $rutas = '';
+    foreach ($images as $idx => $valor) {
+        $retornar = getArray('0', 'Correcto', '0');
+        $rutaSubida = "imagenesClasificados/";
+        $rutaActual = $valor['tmp_name'];
+        $nombreActual = 'IMG-' . $idx . _getDate() . '.png';
+        if (!move_uploaded_file($rutaActual, $rutaSubida . $nombreActual)) {
+            $retornar = getArray('-1', 'Error', 'Ha ocurrido un error subiendo el archivo: ' . $valor['name']);
+            break;
+        } else {
+            $rutas .= $nombreActual . ',';
+            $retornar = getArray('0', 'Correcto', $rutas);
+        }
+    }
+
+    return $retornar;
+}
+
+function _getDate()
+{
+    return date('Y') . date('m') . date('d') . date('Y') . date('H') . date('i') . date('s');
 }
 
 function verificarTrans($server)
 {
     if (@isset($_SERVER['HTTP_METHOD'])
         && @isset($_SERVER['HTTP_ORIGIN'])
-        // && $server['HTTP_ORIGIN'] == "file://") {
-         && ($server['HTTP_ORIGIN'] == "http://127.0.0.1:5500"|| $server['HTTP_ORIGIN'] == "file://")) {
+        && ($server['HTTP_ORIGIN'] == "http://127.0.0.1:5500"
+            || $server['HTTP_ORIGIN'] == "http://localhost"
+            || $server['HTTP_ORIGIN'] == "file://")) {
         return true;
     } else {
         return false;

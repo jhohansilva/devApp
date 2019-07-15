@@ -5,6 +5,7 @@ require_once 'core/lib/nusoap.php';
 
 require_once 'views/propietarios.view.php';
 require_once 'views/propiedades.view.php';
+require_once 'views/clasificados.view.php';
 
 $server = new nusoap_server();
 
@@ -42,6 +43,13 @@ $server->register('consultarPropiedades',
     ['data' => 'tns:ArrayOfString'],
     $urn,
     $urn . '#consultarPropiedades'
+);
+
+$server->register('crearClasificado',
+    ['titulo' => 'xsd:string'],
+    ['data' => 'tns:ArrayOfString'],
+    $urn,
+    $urn . '#crearClasificado'
 );
 
 $server->service(file_get_contents("php://input"));
