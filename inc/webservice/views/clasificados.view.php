@@ -1,5 +1,11 @@
 <?php
-// require_once "./controllers/propiedades.controller.php";
+require_once "./controllers/clasificados.controller.php";
+
+function consultarClasificados($estado)
+{
+    $consultarClasificados_obj = new clasificados_controller();
+    return $consultarClasificados_obj->consultarClasificados_ctrl($estado);
+}
 
 function crearClasificado($titulo)
 {

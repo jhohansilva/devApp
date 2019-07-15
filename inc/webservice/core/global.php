@@ -1,6 +1,6 @@
 <?php
-// $_MAIN = 'http://localhost/devApp/';
-$_MAIN = 'http://localhost/titanApp/';
+$_MAIN = 'http://localhost/devApp/';
+// $_MAIN = 'http://localhost/titanApp/';
 
 // Métodos globales
 function getJson($id, $titulo, $detalle)

@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restringido"
+AuthUserFile C:/xampp/htdocs/devApp/.htpasswd
+Require valid-user

@@ -45,6 +45,13 @@ $server->register('consultarPropiedades',
     $urn . '#consultarPropiedades'
 );
 
+$server->register('consultarClasificados',
+    ['estado' => 'xsd:string'],
+    ['data' => 'tns:ArrayOfString'],
+    $urn,
+    $urn . '#consultarClasificados'
+);
+
 $server->register('crearClasificado',
     ['titulo' => 'xsd:string'],
     ['data' => 'tns:ArrayOfString'],

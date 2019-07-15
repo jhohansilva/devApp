@@ -39,24 +39,6 @@ class propietarios_model
                 } else {
                     $out = getError("Correo electrónico no existe");
                 }
-
-                // --> Consulta general
-                // $consulta = $objDb->query("SELECT * FROM propietarios");
-                // if ($consulta) {
-                //     $i = 0;
-                //     while ($filas = $consulta->fetch_assoc()) {
-                //         $this->$propietarios[] = $filas;
-                //         $i++;
-                //     }
-
-                //     if ($i == 0) {
-                //         $out = getError('No hay registros');
-                //     } else {
-                //         $out = $this->$propietarios;
-                //     }
-                // } else {
-                //     $out = getError('Ha ocurrido un error en la consulta');
-                // }
                 $stmt->close();
                 $con->close();
             } catch (Exception $e) {

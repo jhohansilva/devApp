@@ -1,0 +1,126 @@
+body,
+html {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  background: #f1f1f1;
+}
+
+main {
+  width: 700px;
+  max-width: 90%;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px 0;
+  position: relative;
+}
+
+#principal {
+  width: 100%;
+}
+
+.box-clasificado {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin-bottom: 15px;
+}
+
+.mid-box,
+.info-box,
+.head-box {
+  padding: 10px 15px;
+}
+
+.head-box {
+  border-bottom: 1px solid #ccc;
+}
+
+.info-box {
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  color: #333;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 15px 0;
+}
+
+.badge {
+  padding: 8px 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-weight: 600;
+  color: #555;
+}
+
+.Aprobado {
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.Rechazado {
+  color: #ff5722;
+  border: 1px solid #ff5722;
+}
+
+.Eliminado {
+  background: #ff5722;
+  color: #fff;
+  border: 1px solid #ff5722;
+}
+
+.Pendiente {
+  color: #ffc107;
+  border: 1px solid #ffc107;
+}
+
+/* Loader */
+.loader {
+  display: hide;
+  z-index: 99999;
+  position: absolute;
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loader div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid #007fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #007fff transparent transparent transparent;
+}
+.loader div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loader div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loader div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loader */

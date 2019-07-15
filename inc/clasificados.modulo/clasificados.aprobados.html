@@ -1,0 +1,12 @@
+<div id="principalAceptados"></div>
+<script>
+    $(function () {
+        var consulta = _consultarClasificado('0');
+        if (consulta[0].codigo == '0') {
+            var data = consulta[0].detalle;
+            _llenarDatos(data,'#principalAceptados');
+        } else {
+            $('#principalAceptados').html(consulta[0].detalle);
+        }
+    })
+</script>

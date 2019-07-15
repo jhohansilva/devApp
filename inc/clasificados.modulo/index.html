@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clasificados - admin</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.clasificados.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="clasificados.todos.html">Todos</a></li>
+                <li><a href="clasificados.aprobados.html">Aprobados</a></li>
+                <li><a href="clasificados.pendientes.html">Pendientes</a></li>
+                <li><a href="clasificados.rechazados.html">Rechazados</a></li>
+                <li><a href="clasificados.eliminados.html">Eliminados</a></li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        $(function () {
+            $("#tabs").tabs({
+                beforeLoad: function (event, ui) {
+                    $('.loader').show();
+                },
+                load: function () {
+                    $('.loader').hide();
+                }
+            });
+        });
+
+        _llenarDatos = function (data, div) {
+            data.forEach(val => {
+                let template = `
+                <div class="box-clasificado">
+                    <div class="head-box">
+                        ${val.id} - <b>${val.titulo}</b>
+                    </div>
+                    <div class="mid-box">
+                        ${val.descripcion}
+                    </div>
+                    <div class="info-box">
+                        <div class="item"><b>Conjunto:</b> ${val.nitConjunto} - ${val.descripConjunto}</div>
+                        <div class="item"><b>Propietario:</b> ${val.nitPropietario} - ${val.descripPropietario}</div>
+                        <div class="item"><b>Telefono:</b> ${val.telefono}</div>
+                        <div class="item"><b>Fecha:</b> ${val.fechaRegistro}</div>
+                        <div class="grid-4">
+                            <div class="badge">${_getTipoAnuncio(val.tipoAnuncio)}</div>
+                            <div class="badge">${_getCategoria(val.idCategoria)}</div>
+                            <div class="badge">$ ${val.valor}</div>
+                            <div class="badge ${_getEstado(val.estado)}">${_getEstado(val.estado)}</div>
+                        </div>
+                    </div>
+                </div>`;
+
+                $(div).append(template);
+
+            });
+        }
+
+        _consultarClasificado = function (estadoIn) {
+            var res;
+            $.ajax({
+                url: 'http://192.168.0.64/devapp/inc/clients.php',
+                type: 'POST',
+                data: { estado: estadoIn },
+                dataType: 'json',
+                async: false,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Method", "consultarClasificados");
+                }
+            }).done(function (data) {
+                res = data;
+            });
+
+            return res;
+        }
+
+        _getTipoAnuncio = function (id) {
+            var string;
+            switch (id) {
+                case '1': string = 'Comprar'; break;
+                case '2': string = 'Vender'; break;
+                case '3': string = 'Alquilar'; break;
+                case '4': string = 'Ofertar servicios'; break;
+            }
+
+            return string;
+        }
+
+        _getCategoria = function (id) {
+            var string;
+            switch (id) {
+                case '1': string = 'Casa'; break;
+                case '2': string = 'Apartamento'; break;
+                case '3': string = 'Lote'; break;
+                case '4': string = 'Parqueadero'; break;
+                case '5': string = 'Vehículos'; break;
+                case '6': string = 'Servicios'; break;
+                case '7': string = 'Otros'; break;
+            }
+
+            return string;
+        }
+
+        _getEstado = function (id) {
+            var string;
+            switch (id) {
+                case '0': string = 'Aprobado'; break;
+                case '1': string = 'Pendiente'; break;
+                case '2': string = 'Rechazado'; break;
+                case '3': string = 'Eliminado'; break;
+            }
+
+            return string;
+        }
+    </script>
+</body>
+
+</html>
