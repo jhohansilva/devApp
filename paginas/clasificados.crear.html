@@ -143,7 +143,7 @@
             objData.append('titulo','ABC')
             objData.append('imagenes','')
             $.ajax({
-                url: 'http://192.168.42.146/titanapp/inc/clients.php',
+                url: $_URL_SERVER,
                 type: 'post',
                 data: objData,
                 contentType: false,
@@ -152,11 +152,13 @@
                     request.setRequestHeader("Method", 'crearClasificado');
                 }
             }).done(function (data) {
+                alert('Enviado')
                 console.log(data)
             });
         }
 
         ons.getScriptPage().onInit = function () {
+            _cargarConjutosSelect();
             $('#btnCrearClasificado').click(_guardarFactura)
 
             if (window.File && window.FileList && window.FileReader) {
