@@ -20,83 +20,87 @@
                 </div>
             </div>
             <div class="content">
-                <form id="formCrearClasificado">
-                    <p>
-                        <label>Conjunto:</label>
-                        <select id="conjuntos">
-                            <option value="0" selected disabled>Seleccione</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label>Tipo:</label>
-                        <select id="tipoClasificado">
-                            <option value="0" selected disabled>Seleccione</option>
-                            <option value="1">Comprar</option>
-                            <option value="2">Vender</option>
-                            <option value="3">Alquilar</option>
-                            <option value="4">Ofertar servicios</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label>Categoria:</label>
-                        <select id="categoriaClasificado">
-                            <option value="0" selected disabled>Seleccione</option>
-                            <option value="1">Casa</option>
-                            <option value="2">Apartamento</option>
-                            <option value="3">Lote</option>
-                            <option value="4">Parqueadero</option>
-                            <option value="5">Vehículo</option>
-                            <option value="6">Servicios</option>
-                            <option value="7">Otros</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label>Titulo:</label>
-                        <ons-input autocomplete="off" autocorrect="off" autocapitalize="on" modifier="underbar">
-                        </ons-input>
-                    </p>
-                    <p>
-                        <ons-row>
-                            <ons-col width="80px" vertical-align="center">
-                                <label>Valor:</label>
-                            </ons-col>
-                            <ons-col>
-                                <ons-input id="valor" autocomplete="off" autocorrect="off" autocapitalize="on"
-                                    modifier="underbar">
-                                </ons-input>
-                            </ons-col>
-                        </ons-row>
-                    </p>
-                    <p>
-                        <ons-row>
-                            <ons-col width="80px" vertical-align="center">
-                                <label>Telefono:</label>
-                            </ons-col>
-                            <ons-col>
-                                <ons-input id="telefono" autocomplete="off" autocorrect="off" autocapitalize="on"
-                                    modifier="underbar">
-                                </ons-input>
-                            </ons-col>
-                        </ons-row>
-                    </p>
-                    <p style="padding-top: 15px;">
-                        <label>Descripción:</label>
-                        <textarea class="textarea" rows="6"></textarea>
-                    </p>
-                    <p>
-                        <label>Imagenes: <a id="countImages">0 Seleccionadas</a></label>
-                        <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
-                            <ons-carousel-item>
-                                <input id="files-0" type="file" class="input-file" />
-                                <label for="files-0"></label>
-                            </ons-carousel-item>
-                        </ons-carousel>
-                    </p>
-                    <ons-button id="btnCrearClasificado" modifier="large" style="padding: 24px 0!important;">
-                        <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
-                        Consultar
-                    </ons-button>
-                </form>
+                <!-- <form id="formCrearClasificado"> -->
+                <p>
+                    <label>Conjunto:</label>
+                    <select id="conjuntoClasificado">
+                        <option value="0" selected disabled>Seleccione</option>
+                        <option value="1">Prueba</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Tipo:</label>
+                    <select id="tipoClasificado">
+                        <option value="0" selected disabled>Seleccione</option>
+                        <option value="1">Comprar</option>
+                        <option value="2">Vender</option>
+                        <option value="3">Alquilar</option>
+                        <option value="4">Ofertar servicios</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Categoria:</label>
+                    <select id="categoriaClasificado">
+                        <option value="0" selected disabled>Seleccione</option>
+                        <option value="1">Casa</option>
+                        <option value="2">Apartamento</option>
+                        <option value="3">Lote</option>
+                        <option value="4">Parqueadero</option>
+                        <option value="5">Vehículo</option>
+                        <option value="6">Servicios</option>
+                        <option value="7">Otros</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Titulo:</label>
+                    <ons-input input-id="tituloClasificado" autocomplete="off" autocorrect="off" autocapitalize="on"
+                        modifier="underbar">
+                    </ons-input>
+                </p>
+                <p>
+                    <ons-row>
+                        <ons-col width="80px" vertical-align="center">
+                            <label>Valor:</label>
+                        </ons-col>
+                        <ons-col>
+                            <ons-input id="valor" autocomplete="off" autocorrect="off" autocapitalize="on"
+                                modifier="underbar">
+                            </ons-input>
+                        </ons-col>
+                    </ons-row>
+                </p>
+                <p>
+                    <ons-row>
+                        <ons-col width="80px" vertical-align="center">
+                            <label>Telefono:</label>
+                        </ons-col>
+                        <ons-col>
+                            <ons-input id="telefono" autocomplete="off" autocorrect="off" autocapitalize="on"
+                                modifier="underbar">
+                            </ons-input>
+                        </ons-col>
+                    </ons-row>
+                </p>
+                <p style="padding-top: 15px;">
+                    <label>Descripción:</label>
+                    <textarea id="descripcionClasificado" class="textarea" rows="6"
+                        onkeyup="countChar(this)"></textarea>
+                    <a id="lengthTextarea" style="text-transform: uppercase; font-size: 10px;">Restan 500 caracteres</a>
+                </p>
+                <p>
+                    <label>Imagenes: <a id="countImages">0 Seleccionadas</a></label>
+                    <ons-carousel swipeable auto-scroll overscrollable id="carouselImages">
+                        <ons-carousel-item>
+                            <input id="files-0" type="file" class="input-file" />
+                            <label for="files-0"></label>
+                        </ons-carousel-item>
+                    </ons-carousel>
+                </p>
+                <ons-button id="btnCrearClasificado" modifier="large" style="padding: 24px 0!important;">
+                    <ons-icon size="18px" icon="fa-clipboard-list" style="margin-right: 8px;"></ons-icon>
+                    Consultar
+                </ons-button>
+                <!-- </form> -->
             </div>
         </ons-card>
     </main>
@@ -106,17 +110,17 @@
                 mask: Number, min: 0, max: 999999999, scale: 0, thousandsSeparator: ','
             });
 
-        var phoneMask = new IMask(document.getElementById('telefono'),
+        var telefonoMask = new IMask(document.getElementById('telefono'),
             {
                 mask: '000 000 0000'
             });
 
         _cargarConjutosSelect = function () {
-            var conjuntosSelect = $('#conjuntos'),
+            var conjuntosSelect = $('#conjuntoClasificado'),
                 conjuntosActual = [];
             $_PROPIEDADES.forEach(element => {
                 conjuntosActual = [];
-                let opciones = $('#conjuntos option')
+                let opciones = $('#conjuntoClasificado option')
                 for (var i = 0; i < opciones.length; i++)
                     conjuntosActual.push($(opciones[i]).val())
 
@@ -134,31 +138,47 @@
         }
 
         _guardarFactura = function () {
-            var inputs = $('#carouselImages ons-carousel-item input'),
-                objData = new FormData();
-            for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].files.length > 0) objData.append(i, inputs[i].files[0])
-            }
+            var conjuntoClasificado = $('#conjuntoClasificado :selected').val(),
+                tipoClasificado = $('#tipoClasificado :selected').val(),
+                categoriaClasificado = $('#categoriaClasificado :selected').val(),
+                tituloClasificado = $('#tituloClasificado'),
+                valorClasificado = valorMask.unmaskedValue,
+                telefonoClasificado = telefonoMask.unmaskedValue;
 
-            objData.append('titulo','ABC')
-            objData.append('imagenes','')
-            $.ajax({
-                url: $_URL_SERVER,
-                type: 'post',
-                data: objData,
-                contentType: false,
-                processData: false,
-                beforeSend: function (request) {
-                    request.setRequestHeader("Method", 'crearClasificado');
-                }
-            }).done(function (data) {
-                alert('Enviado')
-                console.log(data)
-            });
+            console.log(telefonoClasificado)
+
+            if (conjuntoClasificado == '0') sendToast('Debes seleccionar un conjunto');
+            else if (tipoClasificado == '0') sendToast('Selecciona un tipo');
+            else if (categoriaClasificado == '0') sendToast('Selecciona una categoría');
+            else if (!tituloClasificado.val()) sendToast('Debes escribir un título');
+            else if (!valorClasificado) sendToast('Debes ingresar un valor');
+            else if (!telefonoClasificado) sendToast('Debes ingresar un telefono de contacto');
+
+            // var inputs = $('#carouselImages ons-carousel-item input'),
+            //     objData = new FormData();
+            // for (var i = 0; i < inputs.length; i++) {
+            //     if (inputs[i].files.length > 0) objData.append(i, inputs[i].files[0])
+            // }
+
+            // objData.append('titulo','ABC')
+            // objData.append('imagenes','')
+            // $.ajax({
+            //     url: $_URL_SERVER,
+            //     type: 'post',
+            //     data: objData,
+            //     contentType: false,
+            //     processData: false,
+            //     beforeSend: function (request) {
+            //         request.setRequestHeader("Method", 'crearClasificado');
+            //     }
+            // }).done(function (data) {
+            //     alert('Enviado')
+            //     console.log(data)
+            // });
         }
 
         ons.getScriptPage().onInit = function () {
-            _cargarConjutosSelect();
+            // _cargarConjutosSelect();
             $('#btnCrearClasificado').click(_guardarFactura)
 
             if (window.File && window.FileList && window.FileReader) {
@@ -251,5 +271,16 @@
 
             _setLabel();
         }
+
+        function countChar(val) {
+            var len = val.value.length,
+                max = 500;
+
+            if (len > max) {
+                val.value = val.value.substring(0, max);
+            } else {
+                $('#lengthTextarea').text(`restan ${max - len} caracteres`);
+            }
+        };
     </script>
 </ons-page>

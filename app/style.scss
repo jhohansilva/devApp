@@ -427,6 +427,12 @@ textarea {
   font-size: 16px !important;
   background: #fafafa!important;
   border: 1px solid #afafaf!important;
+  transition: all 300ms;
+
+  &:focus{
+    border: 1px solid transparent!important;
+    box-shadow: 0 0 0px 1.5px #2f59a9;
+  }
 }
 
 #carouselImages {

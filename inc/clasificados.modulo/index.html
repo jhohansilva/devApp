@@ -72,8 +72,10 @@
 
         _consultarClasificado = function (estadoIn) {
             var res;
+            // var url = 'http://192.168.0.64/devapp/inc/clients.php' 
+            var url = 'http://192.168.42.146/titanapp/inc/clients.php' 
             $.ajax({
-                url: 'http://192.168.0.64/devapp/inc/clients.php',
+                url: url,
                 type: 'POST',
                 data: { estado: estadoIn },
                 dataType: 'json',
