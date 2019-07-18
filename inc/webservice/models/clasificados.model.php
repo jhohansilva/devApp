@@ -46,4 +46,18 @@ class clasificados_model
 
         return $out;
     }
+
+    public function crearClasificado_mdl(
+        $conjunto,
+        $propietario,
+        $tipo,
+        $categoria,
+        $titulo,
+        $descripcion,
+        $valor,
+        $telefono,
+        $imagenes
+    ){
+
+    }
 }

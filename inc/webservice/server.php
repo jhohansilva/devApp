@@ -53,7 +53,17 @@ $server->register('consultarClasificados',
 );
 
 $server->register('crearClasificado',
-    ['titulo' => 'xsd:string'],
+    [
+        'conjuntoClasificado' => 'xsd:string',
+        'nitPropietario' => 'xsd:string',
+        'tipoClasificado' => 'xsd:string',
+        'categoriaClasificado' => 'xsd:string',
+        'tituloClasificado' => 'xsd:string',
+        'descripcionClasificado' => 'xsd:string',
+        'valorClasificado' => 'xsd:float',
+        'telefonoClasificado' => 'xsd:string',
+        'imagenes' => 'xsd:string',
+    ],
     ['data' => 'tns:ArrayOfString'],
     $urn,
     $urn . '#crearClasificado'

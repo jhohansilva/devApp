@@ -21,13 +21,8 @@ if (verificarTrans($_SERVER)) {
         try {
             switch ($method) {
                 case 'logeo':
-                    $out = $client->call($method, $_POST);
-                    break;
                 case 'consultarPropiedades':
-                    $out = $client->call($method, $_POST);
-                    break;
                 case 'consultarClasificados':
-                    // print_r($method);
                     $out = $client->call($method, $_POST);
                     break;
                 case 'crearClasificado':

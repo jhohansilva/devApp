@@ -7,9 +7,27 @@ function consultarClasificados($estado)
     return $consultarClasificados_obj->consultarClasificados_ctrl($estado);
 }
 
-function crearClasificado($titulo)
-{
-    // $consultarPropiedades_obj = new propiedades_controller();
-    // return $consultarPropiedades_obj->consultarPropiedades_ctrl($idPropietario);
-    return ['prueba' => $titulo];
+function crearClasificado(
+    $conjunto,
+    $propietario,
+    $tipo,
+    $categoria,
+    $titulo,
+    $descripcion,
+    $valor,
+    $telefono,
+    $imagenes
+) {
+    $clasificados_obj = new clasificados_controller();
+    return $clasificados_obj->crearClasificado_ctrl(
+        $conjunto,
+        $propietario,
+        $tipo,
+        $categoria,
+        $titulo,
+        $descripcion,
+        $valor,
+        $telefono,
+        $imagenes
+    );
 }

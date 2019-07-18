@@ -3,7 +3,7 @@
         <div class="left">
             <ons-back-button>Home</ons-back-button>
         </div>
-        <div class="center"></div>
+        <div class="center">Clasificados</div>
     </ons-toolbar>
     <main>
         <ons-card class="factura card-full compact">
@@ -143,42 +143,54 @@
                 categoriaClasificado = $('#categoriaClasificado :selected').val(),
                 tituloClasificado = $('#tituloClasificado'),
                 valorClasificado = valorMask.unmaskedValue,
-                telefonoClasificado = telefonoMask.unmaskedValue;
+                telefonoClasificado = telefonoMask.unmaskedValue,
+                descripcionClasificado = $('#descripcionClasificado').val()
+                dataLocal = JSON.parse(getCookie("sesion"));
 
-            console.log(telefonoClasificado)
 
             if (conjuntoClasificado == '0') sendToast('Debes seleccionar un conjunto');
             else if (tipoClasificado == '0') sendToast('Selecciona un tipo');
             else if (categoriaClasificado == '0') sendToast('Selecciona una categoría');
             else if (!tituloClasificado.val()) sendToast('Debes escribir un título');
             else if (!valorClasificado) sendToast('Debes ingresar un valor');
-            else if (!telefonoClasificado) sendToast('Debes ingresar un telefono de contacto');
+            else if (!telefonoClasificado) sendToast('Debes ingresar un número de contacto');
+            else if (descripcionClasificado.length < 10) sendToast('Ingresa una descripcion de al menos 60 caracteres');
+            else if ($('#carouselImages ons-carousel-item label img').length < 1) sendToast('Debes subir al menos una imagen');
+            else {
+                var inputs = $('#carouselImages ons-carousel-item input'),
+                    objData = new FormData();
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].files.length > 0) objData.append(i, inputs[i].files[0])
+                }
 
-            // var inputs = $('#carouselImages ons-carousel-item input'),
-            //     objData = new FormData();
-            // for (var i = 0; i < inputs.length; i++) {
-            //     if (inputs[i].files.length > 0) objData.append(i, inputs[i].files[0])
-            // }
+                objData.append('conjuntoClasificado', conjuntoClasificado)
+                objData.append('nitPropietario', dataLocal.nit)
+                objData.append('tipoClasificado', tipoClasificado)
+                objData.append('categoriaClasificado', categoriaClasificado)
+                objData.append('tituloClasificado', tituloClasificado.val())
+                objData.append('valorClasificado', valorClasificado)
+                objData.append('telefonoClasificado', telefonoClasificado)
+                objData.append('descripcionClasificado', descripcionClasificado)
+                objData.append('imagenes', '')
 
-            // objData.append('titulo','ABC')
-            // objData.append('imagenes','')
-            // $.ajax({
-            //     url: $_URL_SERVER,
-            //     type: 'post',
-            //     data: objData,
-            //     contentType: false,
-            //     processData: false,
-            //     beforeSend: function (request) {
-            //         request.setRequestHeader("Method", 'crearClasificado');
-            //     }
-            // }).done(function (data) {
-            //     alert('Enviado')
-            //     console.log(data)
-            // });
+                $.ajax({
+                    url: $_URL_SERVER,
+                    type: 'post',
+                    data: objData,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Method", 'crearClasificado');
+                    }
+                }).done(function (data) {
+                    // alert('Enviado')
+                    console.log(data)
+                });
+            }
         }
 
         ons.getScriptPage().onInit = function () {
-            // _cargarConjutosSelect();
+            _cargarConjutosSelect();
             $('#btnCrearClasificado').click(_guardarFactura)
 
             if (window.File && window.FileList && window.FileReader) {
